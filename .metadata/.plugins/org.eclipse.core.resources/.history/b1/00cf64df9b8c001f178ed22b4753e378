@@ -1,0 +1,14 @@
+package co.com.munamu.crosscuting.unittesting;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class HelpersUnitTestCase {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

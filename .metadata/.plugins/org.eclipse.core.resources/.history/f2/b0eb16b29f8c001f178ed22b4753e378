@@ -1,0 +1,5 @@
+package co.com.munamu.dto;
+
+public class DomainDTO {
+
+}
