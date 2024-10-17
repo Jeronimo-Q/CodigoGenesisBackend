@@ -19,5 +19,4 @@ public class DomainDTO {
 		this.id = TextHelper.getDefault(id, UUIDHelper.getDefaultAssString());
 	}
 
-	
 }
