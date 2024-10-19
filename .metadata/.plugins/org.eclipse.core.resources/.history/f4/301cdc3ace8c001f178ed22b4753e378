@@ -1,0 +1,41 @@
+package co.com.munamu.dto;
+
+import co.com.munamu.crosscutting.helpers.ObjectHelper;
+import co.com.munamu.crosscutting.helpers.TextHelper;
+import co.com.munamu.crosscutting.helpers.UUIDHelper;
+
+public class GarmentConfigurationDTO extends DomainDTO{
+	
+	private GenreDTO genre;
+	
+	public GarmentConfigurationDTO() {
+		super(UUIDHelper.getDefaultAssString());
+		setGenre(GenreDTO.create());
+	}
+	
+	public static final GarmentConfigurationDTO create() {
+		return new GarmentConfigurationDTO();
+	}
+	
+	public GarmentConfigurationDTO setId(final String id) {
+		super.setIdentifier(id);
+		return this;
+	}
+	
+	@Override
+	public  String getId() {
+		return super.getId();
+	}
+
+	public GenreDTO getGenre() {
+		return genre;
+	}
+
+	public GarmentConfigurationDTO setGenre(final GenreDTO genre) {
+		this.genre = ObjectHelper.getDefault(genre, GenreDTO.create());
+		return this;
+	}
+	
+
+	
+}

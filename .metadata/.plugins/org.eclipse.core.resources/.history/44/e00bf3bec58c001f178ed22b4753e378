@@ -1,0 +1,22 @@
+package co.com.munamu.entity;
+
+import co.com.munamu.crosscutting.helpers.TextHelper;
+import co.com.munamu.crosscutting.helpers.UUIDHelper;
+
+class DomainDTO {
+	
+	private String id;
+	
+	protected DomainDTO(final String id){
+		setId(id);
+	}
+
+	protected String getId() {
+		return id;
+	}
+
+	protected void setId(final String id) {
+		this.id = TextHelper.getDefault(id, UUIDHelper.getDefaultAssString());
+	}
+	
+}

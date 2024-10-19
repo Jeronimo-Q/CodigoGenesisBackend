@@ -1,0 +1,35 @@
+package co.com.munamu.dto;
+
+import co.com.munamu.crosscutting.helpers.TextHelper;
+import co.com.munamu.crosscutting.helpers.UUIDHelper;
+
+public class GeneroDTO extends DomainDTO{
+	
+	private String name;
+	
+	public GeneroDTO(String id) {
+		super(UUIDHelper.getDefaultAssString());
+		setName(TextHelper.EMPTY);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(final String name) {
+		this.name = TextHelper.applyTrim(name);
+	}
+	
+	@Override
+	public void setId(final String id) {
+		super.setId(id);
+	}
+	
+	@Override
+	public  String getId() {
+		return super.getId();
+	}
+	
+
+	
+}

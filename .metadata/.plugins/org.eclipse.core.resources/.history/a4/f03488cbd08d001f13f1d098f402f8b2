@@ -1,0 +1,61 @@
+package co.com.munamu.dto;
+
+import co.com.munamu.crosscutting.helpers.ObjectHelper;
+import co.com.munamu.crosscutting.helpers.TextHelper;
+import co.com.munamu.crosscutting.helpers.UUIDHelper;
+
+public class GarmentDTO extends DomainDTO{
+	
+	private int referencia;
+	private String descripcion;
+	private GarmentConfigurationDTO garmentConfiguration;
+	
+	public GarmentDTO() {
+		super(UUIDHelper.getDefaultAssString());
+		setGarmentConfiguration(GarmentConfigurationDTO.create());
+		
+	}
+	
+	public static final GarmentDTO create() {
+		return new GarmentDTO();
+	}	
+
+	public int getReferencia() {
+		return referencia;
+	}
+
+	public GarmentDTO setReferencia(int referencia) {
+		this.referencia = referencia;
+		return this;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = TextHelper.applyTrim(descripcion);
+	}
+
+	public GarmentConfigurationDTO getGarmentConfiguration() {
+		return garmentConfiguration;
+	}
+
+	public void setGarmentConfiguration(GarmentConfigurationDTO garmentConfiguration) {
+		this.garmentConfiguration = ObjectHelper.getDefault(garmentConfiguration, GarmentConfigurationDTO.create());
+	}
+
+	public GarmentDTO setId(final String id) {
+		super.setIdentifier(id);
+		return this;
+	}
+	
+	@Override
+	public  String getId() {
+		return super.getId();
+	}
+	
+	
+
+	
+}

@@ -1,0 +1,10 @@
+package co.com.munamu.dto;
+
+public class PrendaDTO{
+	
+	private int referencia; 
+	private String descripcion;
+
+	
+
+}
