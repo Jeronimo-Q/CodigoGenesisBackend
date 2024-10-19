@@ -12,6 +12,6 @@
     <fullyQualifiedTypeName name="co.com.munamu.dto.GarmentConfigurationDTO"/>
     <fullyQualifiedTypeName name="co.com.munamu.crosscutting.helpers.TextHelper"/>
     <fullyQualifiedTypeName name="co.com.munamu.crosscutting.helpers.ObjectHelper"/>
-    <fullyQualifiedTypeName name="co.com.munamu.dto.GarmentDTO"/>
     <fullyQualifiedTypeName name="co.com.munamu.dto.SizeDTO"/>
+    <fullyQualifiedTypeName name="co.com.munamu.dto.GarmentDTO"/>
 </qualifiedTypeNameHistroy>

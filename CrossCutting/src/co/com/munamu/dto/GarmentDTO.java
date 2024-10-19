@@ -14,7 +14,7 @@ public class GarmentDTO extends DomainDTO{
 		super(UUIDHelper.getDefaultAssString());
 		setGarmentConfiguration(GarmentConfigurationDTO.create());
 		setDescripcion(TextHelper.EMPTY);
-		//No olvidar que falta terminar lo que es lo de referncia
+		//No olvidar que falta terminar lo que es lo de referencia
 		
 	}
 	
