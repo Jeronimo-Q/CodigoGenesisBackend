@@ -1,8 +1,6 @@
 package co.com.munamu.crosscutting.helpers;
 
 public final class NumericHelper {
-	
-	
 
 		public static final <T extends Number> boolean isGreat(final T numberOne, final T numberTwo) {
 			return numberOne.doubleValue() > numberTwo.doubleValue();

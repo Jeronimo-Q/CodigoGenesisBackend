@@ -5,26 +5,21 @@ import java.util.UUID;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
-public class GeneroEntity extends DomainEntity{
+public class GenreEntity extends DomainEntity{
 	
 	private String name;
 	
-	public GeneroEntity() {
+	public GenreEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-	}
-	
-	public static final GeneroEntity create() {
-		return new GeneroEntity();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public GeneroEntity setName(final String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.applyTrim(name);
-		return this;
 	}
 	
 	@Override
@@ -36,7 +31,5 @@ public class GeneroEntity extends DomainEntity{
 	public  UUID getId() {
 		return super.getId();
 	}
-	
-
 	
 }
