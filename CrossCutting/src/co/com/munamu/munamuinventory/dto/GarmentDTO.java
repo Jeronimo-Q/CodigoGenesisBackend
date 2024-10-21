@@ -6,7 +6,7 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
 public class GarmentDTO extends DomainDTO{
 	
-	private int referencia;
+	private String referencia;
 	private String descripcion;
 	private GarmentConfigurationDTO garmentConfiguration;
 	
@@ -14,20 +14,19 @@ public class GarmentDTO extends DomainDTO{
 		super(UUIDHelper.getDefaultAssString());
 		setGarmentConfiguration(GarmentConfigurationDTO.create());
 		setDescripcion(TextHelper.EMPTY);
-		//No olvidar que falta terminar lo que es lo de referencia
-		
+		setReferencia(TextHelper.EMPTY);
 	}
 	
 	public static final GarmentDTO create() {
 		return new GarmentDTO();
 	}	
 
-	public int getReferencia() {
+	public String getReferencia() {
 		return referencia;
 	}
 
-	public GarmentDTO setReferencia(final int referencia) {
-		this.referencia = referencia;
+	public GarmentDTO setReferencia(final String referencia) {
+		this.referencia = TextHelper.applyTrim(referencia);
 		return this;
 	}
 

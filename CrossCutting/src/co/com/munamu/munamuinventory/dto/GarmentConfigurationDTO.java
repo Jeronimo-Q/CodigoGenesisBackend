@@ -13,6 +13,7 @@ public class GarmentConfigurationDTO extends DomainDTO{
 		super(UUIDHelper.getDefaultAssString());
 		setGenre(GenreDTO.create());
 		setTypeGarment(TypeGarmentDTO.create());
+		setCategory(CategoryDTO.create());
 	}
 	
 	public static final GarmentConfigurationDTO create() {

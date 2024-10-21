@@ -28,6 +28,7 @@ public class SizeEntity extends DomainEntity{
 	}
 	
 
+	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
 	

@@ -5,28 +5,29 @@ import java.util.UUID;
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
-public class GarmentConfigurationEntity extends DomainEntity{
+public class GarmentConfigurationDomain extends DomainEntity{
 	
-	private GenreEntity genre;
+	private GenreDomain genre;
 	private CategoryEntity category;
 	private TypeGarmentEntity typeGarment;
 	
-	public GarmentConfigurationEntity() {
+	public GarmentConfigurationDomain() {
 		super(UUIDHelper.getDefault());
-		setGenre(GenreEntity.create());
+		setGenre(GenreDomain.create());
 		setTypeGarment(TypeGarmentEntity.create());
+		setCategory(CategoryEntity.create());
 	}
 	
-	public static final GarmentConfigurationEntity create() {
-		return new GarmentConfigurationEntity();
+	public static final GarmentConfigurationDomain create() {
+		return new GarmentConfigurationDomain();
 	}
 
-	public GenreEntity getGenre() {
+	public GenreDomain getGenre() {
 		return genre;
 	}
 
-	public GarmentConfigurationEntity setGenre(final GenreEntity genre) {
-		this.genre = ObjectHelper.getDefault(genre, GenreEntity.create());
+	public GarmentConfigurationDomain setGenre(final GenreDomain genre) {
+		this.genre = ObjectHelper.getDefault(genre, GenreDomain.create());
 		return this;
 	}
 
@@ -34,7 +35,7 @@ public class GarmentConfigurationEntity extends DomainEntity{
 		return category;
 	}
 
-	public GarmentConfigurationEntity setCategory(final CategoryEntity category) {
+	public GarmentConfigurationDomain setCategory(final CategoryEntity category) {
 		this.category = ObjectHelper.getDefault(category, CategoryEntity.create());
 		return this;
 	}
@@ -43,11 +44,12 @@ public class GarmentConfigurationEntity extends DomainEntity{
 		return typeGarment;
 	}
 
-	public GarmentConfigurationEntity setTypeGarment(final TypeGarmentEntity typeGarment) {
+	public GarmentConfigurationDomain setTypeGarment(final TypeGarmentEntity typeGarment) {
 		this.typeGarment = ObjectHelper.getDefault(typeGarment, TypeGarmentEntity.create());
 		return this;
 	}
 	
+	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
 	}

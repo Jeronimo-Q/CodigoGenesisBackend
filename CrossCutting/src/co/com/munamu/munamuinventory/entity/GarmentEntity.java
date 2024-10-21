@@ -8,28 +8,27 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
 public class GarmentEntity extends DomainEntity{
 	
-	private int referencia;
+	private String referencia;
 	private String descripcion;
-	private GarmentConfigurationEntity garmentConfiguration;
+	private GarmentConfigurationDomain garmentConfiguration;
 	
 	public GarmentEntity() {
 		super(UUIDHelper.getDefault());
-		setGarmentConfiguration(GarmentConfigurationEntity.create());
+		setGarmentConfiguration(GarmentConfigurationDomain.create());
 		setDescripcion(TextHelper.EMPTY);
-		//No olvidar que falta terminar lo que es lo de referencia
-		
+		setReferencia(TextHelper.EMPTY);
 	}
 	
 	public static final GarmentEntity create() {
 		return new GarmentEntity();
 	}	
 
-	public int getReferencia() {
+	public String getReferencia() {
 		return referencia;
 	}
 
-	public GarmentEntity setReferencia(final int referencia) {
-		this.referencia = referencia;
+	public GarmentEntity setReferencia(final String referencia) {
+		this.referencia = TextHelper.applyTrim(referencia);
 		return this;
 	}
 
@@ -42,15 +41,16 @@ public class GarmentEntity extends DomainEntity{
 		return this;
 	}
 
-	public GarmentConfigurationEntity getGarmentConfiguration() {
+	public GarmentConfigurationDomain getGarmentConfiguration() {
 		return garmentConfiguration;
 	}
 
-	public GarmentEntity setGarmentConfiguration(final GarmentConfigurationEntity garmentConfiguration) {
-		this.garmentConfiguration = ObjectHelper.getDefault(garmentConfiguration, GarmentConfigurationEntity.create());
+	public GarmentEntity setGarmentConfiguration(final GarmentConfigurationDomain garmentConfiguration) {
+		this.garmentConfiguration = ObjectHelper.getDefault(garmentConfiguration, GarmentConfigurationDomain.create());
 		return this;
 	}
 
+	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
 	

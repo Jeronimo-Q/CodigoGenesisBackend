@@ -5,21 +5,21 @@ import java.util.UUID;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
-public class GenreDomain extends Domain{
+public class TypeGarmentDomain extends Domain{
 	
 	private String name;
 	
-	private GenreDomain(final UUID id , final String name) {
+	private TypeGarmentDomain(final UUID id , final String name) {
 		super (id);
 		setName(name);
 	}
 	
-	public final GenreDomain create(final UUID id , final String name) {
-		return new GenreDomain(id, name);
+	public static final TypeGarmentDomain create(final UUID id , final String name) {
+		return new TypeGarmentDomain(id, name);
 	}
 	
-	static final GenreDomain create() {
-		return new GenreDomain(UUIDHelper.getDefault(), TextHelper.EMPTY);
+	static final TypeGarmentDomain create() {
+		return new TypeGarmentDomain(UUIDHelper.getDefault(), TextHelper.EMPTY);
 	}
 
 	public String getName() {
@@ -34,4 +34,5 @@ public class GenreDomain extends Domain{
 	public  UUID getId() {
 		return super.getId();
 	}
+	
 }

@@ -38,6 +38,7 @@ public class SizePerGarmentEntity extends DomainEntity{
 		return this;
 	}
 
+	@Override
 	public void setId(final UUID id) {
 		super.setId(id);
 	
