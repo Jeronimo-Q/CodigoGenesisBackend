@@ -5,23 +5,23 @@ import java.util.UUID;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
-public class GenreDomain extends DomainEntity{
+public class GenreEntity extends DomainEntity{
 	
 	private String name;
 	
-	public GenreDomain() {
+	public GenreEntity() {
 		super(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
 	}
-	public static final GenreDomain create() {
-		return new GenreDomain();
+	public static final GenreEntity create() {
+		return new GenreEntity();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public GenreDomain setName(final String name) {
+	public GenreEntity setName(final String name) {
 		this.name = TextHelper.applyTrim(name);
 		return this;
 	}

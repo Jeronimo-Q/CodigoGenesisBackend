@@ -5,29 +5,29 @@ import java.util.UUID;
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
-public class GarmentConfigurationDomain extends DomainEntity{
+public class GarmentConfigurationEntity extends DomainEntity{
 	
-	private GenreDomain genre;
+	private GenreEntity genre;
 	private CategoryEntity category;
 	private TypeGarmentEntity typeGarment;
 	
-	public GarmentConfigurationDomain() {
+	public GarmentConfigurationEntity() {
 		super(UUIDHelper.getDefault());
-		setGenre(GenreDomain.create());
+		setGenre(GenreEntity.create());
 		setTypeGarment(TypeGarmentEntity.create());
 		setCategory(CategoryEntity.create());
 	}
 	
-	public static final GarmentConfigurationDomain create() {
-		return new GarmentConfigurationDomain();
+	public static final GarmentConfigurationEntity create() {
+		return new GarmentConfigurationEntity();
 	}
 
-	public GenreDomain getGenre() {
+	public GenreEntity getGenre() {
 		return genre;
 	}
 
-	public GarmentConfigurationDomain setGenre(final GenreDomain genre) {
-		this.genre = ObjectHelper.getDefault(genre, GenreDomain.create());
+	public GarmentConfigurationEntity setGenre(final GenreEntity genre) {
+		this.genre = ObjectHelper.getDefault(genre, GenreEntity.create());
 		return this;
 	}
 
@@ -35,7 +35,7 @@ public class GarmentConfigurationDomain extends DomainEntity{
 		return category;
 	}
 
-	public GarmentConfigurationDomain setCategory(final CategoryEntity category) {
+	public GarmentConfigurationEntity setCategory(final CategoryEntity category) {
 		this.category = ObjectHelper.getDefault(category, CategoryEntity.create());
 		return this;
 	}
@@ -44,7 +44,7 @@ public class GarmentConfigurationDomain extends DomainEntity{
 		return typeGarment;
 	}
 
-	public GarmentConfigurationDomain setTypeGarment(final TypeGarmentEntity typeGarment) {
+	public GarmentConfigurationEntity setTypeGarment(final TypeGarmentEntity typeGarment) {
 		this.typeGarment = ObjectHelper.getDefault(typeGarment, TypeGarmentEntity.create());
 		return this;
 	}

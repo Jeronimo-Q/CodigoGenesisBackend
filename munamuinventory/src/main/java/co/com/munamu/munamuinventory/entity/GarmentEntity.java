@@ -10,11 +10,11 @@ public class GarmentEntity extends DomainEntity{
 	
 	private String referencia;
 	private String descripcion;
-	private GarmentConfigurationDomain garmentConfiguration;
+	private GarmentConfigurationEntity garmentConfiguration;
 	
 	public GarmentEntity() {
 		super(UUIDHelper.getDefault());
-		setGarmentConfiguration(GarmentConfigurationDomain.create());
+		setGarmentConfiguration(GarmentConfigurationEntity.create());
 		setDescripcion(TextHelper.EMPTY);
 		setReferencia(TextHelper.EMPTY);
 	}
@@ -41,12 +41,12 @@ public class GarmentEntity extends DomainEntity{
 		return this;
 	}
 
-	public GarmentConfigurationDomain getGarmentConfiguration() {
+	public GarmentConfigurationEntity getGarmentConfiguration() {
 		return garmentConfiguration;
 	}
 
-	public GarmentEntity setGarmentConfiguration(final GarmentConfigurationDomain garmentConfiguration) {
-		this.garmentConfiguration = ObjectHelper.getDefault(garmentConfiguration, GarmentConfigurationDomain.create());
+	public GarmentEntity setGarmentConfiguration(final GarmentConfigurationEntity garmentConfiguration) {
+		this.garmentConfiguration = ObjectHelper.getDefault(garmentConfiguration, GarmentConfigurationEntity.create());
 		return this;
 	}
 
