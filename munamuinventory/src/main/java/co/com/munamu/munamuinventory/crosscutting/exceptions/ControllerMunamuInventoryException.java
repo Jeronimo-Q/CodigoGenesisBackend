@@ -11,16 +11,16 @@ public class ControllerMunamuInventoryException extends MunamuInventoryException
 		super(userMessage, technicalMessage, rootException, Layer.CONTROLLER);
 	}
 
-	public static final ControllerMunamuInventoryException crear(final String userMessage, final String technicalMessage,
+	public static final ControllerMunamuInventoryException create(final String userMessage, final String technicalMessage,
 			final Exception rootException) {
 		return new ControllerMunamuInventoryException(userMessage, technicalMessage, rootException);
 	}
 
-	public static final ControllerMunamuInventoryException crear(final String userMessage) {
+	public static final ControllerMunamuInventoryException create(final String userMessage) {
 		return new ControllerMunamuInventoryException(userMessage, userMessage, new Exception());
 	}
 
-	public static final ControllerMunamuInventoryException crear(final String userMessage, final String technicalMessage) {
+	public static final ControllerMunamuInventoryException create(final String userMessage, final String technicalMessage) {
 		return new ControllerMunamuInventoryException(userMessage, technicalMessage, new Exception());
 	}
 

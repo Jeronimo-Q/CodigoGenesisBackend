@@ -12,12 +12,12 @@ public class MunamuInventoryException extends MunamuApplicationException {
 		super(userMessage, technicalMessage, rootException, layer);
 	}
 
-	public static MunamuInventoryException crear(final String userMessage, final String technicalMessage,
+	public static MunamuInventoryException create(final String userMessage, final String technicalMessage,
 			final Exception rootException, final Layer layer) {
 		return new MunamuInventoryException(userMessage, technicalMessage, rootException, layer);
 	}
 
-	public static MunamuInventoryException crear(final String userMessage) {
+	public static MunamuInventoryException create(final String userMessage) {
 		return new MunamuInventoryException(userMessage, userMessage, new Exception(), Layer.GENERAL);
 	}
 

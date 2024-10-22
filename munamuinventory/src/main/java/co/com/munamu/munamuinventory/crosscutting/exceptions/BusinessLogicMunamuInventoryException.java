@@ -11,16 +11,16 @@ public class BusinessLogicMunamuInventoryException extends MunamuInventoryExcept
 		super(userMessage, technicalMessage, rootException, Layer.BUSINESSLOGIC);
 	}
 
-	public static final BusinessLogicMunamuInventoryException crear(final String userMessage, final String technicalMessage,
+	public static final BusinessLogicMunamuInventoryException create(final String userMessage, final String technicalMessage,
 			final Exception rootException) {
 		return new BusinessLogicMunamuInventoryException(userMessage, technicalMessage, rootException);
 	}
 
-	public static final BusinessLogicMunamuInventoryException crear(final String userMessage) {
+	public static final BusinessLogicMunamuInventoryException create(final String userMessage) {
 		return new BusinessLogicMunamuInventoryException(userMessage, userMessage, new Exception());
 	}
 
-	public static final BusinessLogicMunamuInventoryException crear(final String userMessage, final String technicalMessage) {
+	public static final BusinessLogicMunamuInventoryException create(final String userMessage, final String technicalMessage) {
 		return new BusinessLogicMunamuInventoryException(userMessage, technicalMessage, new Exception());
 	}
 

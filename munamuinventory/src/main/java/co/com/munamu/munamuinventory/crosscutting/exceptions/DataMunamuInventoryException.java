@@ -10,16 +10,16 @@ public class DataMunamuInventoryException extends MunamuInventoryException {
 		super(userMessage, technicalMessage, rootException, Layer.DATA);
 	}
 
-	public static final DataMunamuInventoryException crear(final String userMessage, final String technicalMessage,
+	public static final DataMunamuInventoryException create(final String userMessage, final String technicalMessage,
 			final Exception rootException) {
 		return new DataMunamuInventoryException(userMessage, technicalMessage, rootException);
 	}
 
-	public static final DataMunamuInventoryException crear(final String userMessage) {
+	public static final DataMunamuInventoryException create(final String userMessage) {
 		return new DataMunamuInventoryException(userMessage, userMessage, new Exception());
 	}
 
-	public static final DataMunamuInventoryException crear(final String userMessage, final String technicalMessage) {
+	public static final DataMunamuInventoryException create(final String userMessage, final String technicalMessage) {
 		return new DataMunamuInventoryException(userMessage, technicalMessage, new Exception());
 	}
 

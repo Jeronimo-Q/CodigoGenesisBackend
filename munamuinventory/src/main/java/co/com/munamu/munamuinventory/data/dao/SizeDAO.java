@@ -2,8 +2,8 @@ package co.com.munamu.munamuinventory.data.dao;
 
 import java.util.UUID;
 
-import co.com.munamu.munamuinventory.entity.CategoryEntity;
+import co.com.munamu.munamuinventory.entity.SizeEntity;
 
-public interface SizeDAO extends RetrieveDAO<CategoryEntity, UUID>{
+public interface SizeDAO extends RetrieveDAO<SizeEntity, UUID>{
 
 }
