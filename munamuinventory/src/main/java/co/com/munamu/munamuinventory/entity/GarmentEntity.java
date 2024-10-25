@@ -8,36 +8,36 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
 public class GarmentEntity extends DomainEntity{
 	
-	private String referencia;
-	private String descripcion;
+	private String reference;
+	private String description;
 	private GarmentConfigurationEntity garmentConfiguration;
 	
 	public GarmentEntity() {
 		super(UUIDHelper.getDefault());
 		setGarmentConfiguration(GarmentConfigurationEntity.create());
-		setDescripcion(TextHelper.EMPTY);
-		setReferencia(TextHelper.EMPTY);
+		setDescription(TextHelper.EMPTY);
+		setReference(TextHelper.EMPTY);
 	}
 	
 	public static final GarmentEntity create() {
 		return new GarmentEntity();
 	}	
 
-	public String getReferencia() {
-		return referencia;
+	public String getReference() {
+		return reference;
 	}
 
-	public GarmentEntity setReferencia(final String referencia) {
-		this.referencia = TextHelper.applyTrim(referencia);
+	public GarmentEntity setReference(final String reference) {
+		this.reference = TextHelper.applyTrim(reference);
 		return this;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	public GarmentEntity setDescripcion(final String descripcion) {
-		this.descripcion = TextHelper.applyTrim(descripcion);
+	public GarmentEntity setDescription(final String description) {
+		this.description = TextHelper.applyTrim(description);
 		return this;
 	}
 

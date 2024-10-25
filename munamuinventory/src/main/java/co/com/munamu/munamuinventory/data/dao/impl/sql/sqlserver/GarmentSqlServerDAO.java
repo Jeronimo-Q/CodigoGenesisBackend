@@ -63,8 +63,8 @@ public class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 			while (result.next()) {
 				var garmentEntityTmp = new GarmentEntity();
 				garmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
-				garmentEntityTmp.setReferencia("referencia");
-				garmentEntityTmp.setReferencia("descripcion");
+				garmentEntityTmp.setReference("reference");
+				garmentEntityTmp.setReference("description");
 				garmentEntityTmp.setGarmentConfiguration((GarmentConfigurationEntity) result.getObject("garmentConfiguration"));
 				resultSelect.add(garmentEntityTmp);
 			}
@@ -105,13 +105,13 @@ public class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 	@Override
 	public void create(GarmentEntity data) {
 		final StringBuilder statement = new StringBuilder();
-		statement.append("INSERT INTO Garment(id, referencia, descripcion, garmentConfiguration) VALUES (?, ?, ?, ?) ");
+		statement.append("INSERT INTO Garment(id, reference, description, garmentConfiguration) VALUES (?, ?, ?, ?) ");
 		
 		try(final var preparedStatement = getConnection().prepareStatement(statement.toString())){
 			
 			preparedStatement.setObject(1, data.getId());
-			preparedStatement.setString(2, data.getReferencia());
-			preparedStatement.setString(3, data.getDescripcion());
+			preparedStatement.setString(2, data.getReference());
+			preparedStatement.setString(3, data.getDescription());
 			preparedStatement.setObject(4, data.getGarmentConfiguration().getId());
 			
 			preparedStatement.executeUpdate();
@@ -139,7 +139,7 @@ public class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 				statemet.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			}
-			if(!TextHelper.isEmptyAppplyingTrim(filter.getReferencia())) {
+			if(!TextHelper.isEmptyAppplyingTrim(filter.getReference())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("referencia = ? ");
 				parameters.add(filter.getId());

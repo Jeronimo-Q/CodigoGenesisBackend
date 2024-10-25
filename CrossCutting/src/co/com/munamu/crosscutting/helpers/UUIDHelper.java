@@ -14,10 +14,14 @@ public final class UUIDHelper {
 		return UUID.fromString(uuidAsString);
 	}
 
+	public static final UUID convertToUUID(final Object uuidAsObject) {
+		return convertToUUID(ObjectHelper.getDefault(uuidAsObject, "").toString());
+	}
+
 	public static final UUID getDefault(final UUID value, final UUID defaultValue) {
 		return ObjectHelper.getDefault(value, defaultValue);
 	}
-	
+
 	public static final String getDefaultAssString() {
 		return DEFAULT_UUID_STRING;
 	}

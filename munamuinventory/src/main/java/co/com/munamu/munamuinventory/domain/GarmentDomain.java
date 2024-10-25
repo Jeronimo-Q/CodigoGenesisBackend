@@ -9,40 +9,40 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 
 public class GarmentDomain extends Domain{
 	
-	private String referencia;
-	private String descripcion;
+	private String reference;
+	private String description;
 	private GarmentConfigurationDomain garmentConfiguration;
 	
-	private GarmentDomain(final UUID id, final GarmentConfigurationDomain garmentConfiguration,final String descripcion,final String referencia) {
+	private GarmentDomain(final UUID id, final GarmentConfigurationDomain garmentConfiguration,final String description,final String reference) {
 		super (id);
 		setGarmentConfiguration(garmentConfiguration);
-		setDescripcion(descripcion);
-		setReferencia(referencia);
+		setDescription(description);
+		setReference(reference);
 		
 	}
 	
-	public static GarmentDomain create(final UUID id, final GarmentConfigurationDomain garmentConfiguration,final String descripcion,final String referencia) {
-		return new GarmentDomain(id, garmentConfiguration, descripcion, referencia);
+	public static GarmentDomain create(final UUID id, final GarmentConfigurationDomain garmentConfiguration,final String description,final String reference) {
+		return new GarmentDomain(id, garmentConfiguration, description, reference);
 	}
 	
 	static final GarmentDomain create() {
 		return new GarmentDomain(UUIDHelper.getDefault(), GarmentConfigurationDomain.create(), TextHelper.EMPTY,TextHelper.EMPTY);
 	}
 	
-	public String getReferencia() {
-		return referencia;
+	public String getReference() {
+		return reference;
 	}
 
-	private void setReferencia(String referencia) {
-		this.referencia = TextHelper.applyTrim(referencia);
+	private void setReference(String reference) {
+		this.reference = TextHelper.applyTrim(reference);
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescription() {
+		return description;
 	}
 
-	private void setDescripcion(String descripcion) {
-		this.descripcion = TextHelper.applyTrim(descripcion);
+	private void setDescription(String description) {
+		this.description = TextHelper.applyTrim(description);
 	}
 
 	public GarmentConfigurationDomain getGarmentConfiguration() {
