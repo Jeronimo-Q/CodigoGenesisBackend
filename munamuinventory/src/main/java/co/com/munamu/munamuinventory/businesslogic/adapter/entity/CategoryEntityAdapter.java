@@ -8,7 +8,16 @@ import co.com.munamu.munamuinventory.domain.CategoryDomain;
 import co.com.munamu.munamuinventory.entity.CategoryEntity;
 
 public class CategoryEntityAdapter implements Adapter<CategoryDomain,CategoryEntity> {
-
+	private static final Adapter<CategoryDomain,CategoryEntity> instance = new CategoryEntityAdapter();
+	
+	private CategoryEntityAdapter() {
+		
+	}
+	
+	public static Adapter<CategoryDomain,CategoryEntity> getCategoryEntityAdapter(){
+		return instance;
+	}
+	
 	@Override
 	public CategoryDomain adaptSource(final CategoryEntity data) {
 		var entityToAdapt=ObjectHelper.getDefault(data,CategoryEntity.create());

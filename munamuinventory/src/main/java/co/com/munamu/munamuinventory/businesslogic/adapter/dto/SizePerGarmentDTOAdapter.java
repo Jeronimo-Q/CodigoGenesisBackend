@@ -5,7 +5,18 @@ import co.com.munamu.munamuinventory.domain.SizePerGarmentDomain;
 import co.com.munamu.munamuinventory.dto.SizePerGarmentDTO;
 
 public class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,SizePerGarmentDTO> {
-	 @Override
+	 
+	private static final Adapter<SizePerGarmentDomain,SizePerGarmentDTO> instance = new SizePerGarmentDTOAdapter();
+	
+	private SizePerGarmentDTOAdapter() {
+		
+	}
+	
+	public static Adapter<SizePerGarmentDomain,SizePerGarmentDTO> getSizePerGarmentEntityAdapter(){
+		return instance;
+	}
+	
+	@Override
 	    public SizePerGarmentDomain adaptSource(final SizePerGarmentDTO data) {
 		 return null;
 	    }

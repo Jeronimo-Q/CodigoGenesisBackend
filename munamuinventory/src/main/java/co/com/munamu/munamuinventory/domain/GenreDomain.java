@@ -14,7 +14,7 @@ public class GenreDomain extends Domain{
 		setName(name);
 	}
 	
-	public final GenreDomain create(final UUID id , final String name) {
+	public static GenreDomain create(final UUID id , final String name) {
 		return new GenreDomain(id, name);
 	}
 	
