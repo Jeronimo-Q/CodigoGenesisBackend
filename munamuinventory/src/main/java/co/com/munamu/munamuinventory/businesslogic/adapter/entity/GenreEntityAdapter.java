@@ -4,9 +4,7 @@ import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
-import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
 import co.com.munamu.munamuinventory.domain.GenreDomain;
-import co.com.munamu.munamuinventory.entity.GarmentConfigurationEntity;
 import co.com.munamu.munamuinventory.entity.GenreEntity;
 
 public class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity> {
@@ -27,6 +25,7 @@ public class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity> {
 	
 	@Override
 	public GenreEntity adaptTarget(final GenreDomain data) {
+		
 		return null;
 	}
 }
