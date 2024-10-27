@@ -20,13 +20,20 @@ public class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity> {
 	
 	@Override
 	public GenreDomain adaptSource(final GenreEntity data) {
-		return null;
+		var entityToAdapt=ObjectHelper.getDefault(data,GenreEntity.create());
+		return GenreDomain.create(entityToAdapt.getId(),entityToAdapt.getName());
 	}
 	
 	@Override
 	public GenreEntity adaptTarget(final GenreDomain data) {
+		var domainToAdapt = ObjectHelper.getDefault(data,
+				GenreDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
 		
-		return null;
+		var entityAdapted = new GenreEntity();
+		entityAdapted.setId(domainToAdapt.getId());
+		entityAdapted.setName(domainToAdapt.getName());
+		
+		return entityAdapted;
 	}
 }
 
