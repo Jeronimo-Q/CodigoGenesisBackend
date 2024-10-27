@@ -1,13 +1,22 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
 import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
-import co.com.munamu.munamuinventory.domain.CategoryDomain;
 import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
-import co.com.munamu.munamuinventory.dto.CategoryDTO;
 import co.com.munamu.munamuinventory.dto.GarmentConfigurationDTO;
 
+
 public class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> {
-	 @Override
+	private static final Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> instance = new GarmentConfigurationDTOAdapter();
+	
+	private GarmentConfigurationDTOAdapter() {
+		
+	}
+	
+	public static Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> getGarmentConfigurationEntityAdapter(){
+		return instance;
+	}
+	
+	@Override
 	    public GarmentConfigurationDomain adaptSource(final GarmentConfigurationDTO data) {
 		 return null;
 	    }

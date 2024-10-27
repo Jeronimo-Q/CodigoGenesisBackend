@@ -5,7 +5,17 @@ import co.com.munamu.munamuinventory.domain.SizeDomain;
 import co.com.munamu.munamuinventory.dto.SizeDTO;
 
 public class SizeDTOAdapter implements Adapter<SizeDomain,SizeDTO> {
-	 @Override
+	
+	private static final Adapter<SizeDomain,SizeDTO> instance = new SizeDTOAdapter();
+	
+	private SizeDTOAdapter() {
+		
+	}
+	public static Adapter<SizeDomain,SizeDTO> getSizeDTOAdapter(){
+		return instance;
+	}
+	
+	@Override
 	    public SizeDomain adaptSource(final SizeDTO data) {
 		 return null;
 	    }

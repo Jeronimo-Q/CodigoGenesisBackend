@@ -5,7 +5,17 @@ import co.com.munamu.munamuinventory.domain.GarmentDomain;
 import co.com.munamu.munamuinventory.dto.GarmentDTO;
 
 public class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
-	 @Override
+	 
+	private static final Adapter<GarmentDomain,GarmentDTO> instance = new GarmentDTOAdapter();
+	
+	private GarmentDTOAdapter() {
+		
+	}
+	
+	public static Adapter<GarmentDomain,GarmentDTO> getGarmentDTOAdapter(){
+		return instance;
+	}
+	@Override
 	    public GarmentDomain adaptSource(final GarmentDTO data) {
 		 return null;
 	    }
