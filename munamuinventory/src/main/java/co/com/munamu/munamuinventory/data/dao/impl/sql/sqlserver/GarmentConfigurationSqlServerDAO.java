@@ -16,7 +16,7 @@ import co.com.munamu.munamuinventory.entity.GarmentConfigurationEntity;
 import co.com.munamu.munamuinventory.entity.GenreEntity;
 import co.com.munamu.munamuinventory.entity.TypeGarmentEntity;
 
-public class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentConfigurationDAO {
+final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentConfigurationDAO {
 
 	protected GarmentConfigurationSqlServerDAO(final Connection connection) {
 		super(connection);
@@ -63,14 +63,18 @@ public class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentC
 
 			while (result.next()) {
 				var garmentConfigurationEntityTmp = new GarmentConfigurationEntity();
+				var categoryEntityTmp = new CategoryEntity();
+				var genreEntityTmp = new GenreEntity();
+				var typeGarmentEntityTmp = new TypeGarmentEntity();
+				
+				categoryEntityTmp.setName(result.getString("category"));
+				genreEntityTmp.setName(result.getString("genre"));
+				typeGarmentEntityTmp.setName(result.getString("typeGarment"));
+				
 				garmentConfigurationEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
-
-				var categoryEntity = new CategoryEntity();
-				categoryEntity.setId(UUIDHelper.convertToUUID(result.getObject("category")));
-
-				garmentConfigurationEntityTmp.setCategory(categoryEntity);
-				garmentConfigurationEntityTmp.setGenre((GenreEntity) result.getObject("genre"));
-				garmentConfigurationEntityTmp.setTypeGarment((TypeGarmentEntity) result.getObject("typeGarment"));
+				garmentConfigurationEntityTmp.setCategory(categoryEntityTmp);
+				garmentConfigurationEntityTmp.setGenre(genreEntityTmp);
+				garmentConfigurationEntityTmp.setTypeGarment(typeGarmentEntityTmp);
 				resultSelect.add(garmentConfigurationEntityTmp);
 			}
 

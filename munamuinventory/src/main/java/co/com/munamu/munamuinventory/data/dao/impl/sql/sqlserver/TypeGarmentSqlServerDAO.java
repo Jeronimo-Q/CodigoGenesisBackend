@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.data.dao.TypeGarmentDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
 import co.com.munamu.munamuinventory.entity.TypeGarmentEntity;
 
-public class TypeGarmentSqlServerDAO extends SqlDAO implements TypeGarmentDAO{
+final class TypeGarmentSqlServerDAO extends SqlDAO implements TypeGarmentDAO{
 
 	protected TypeGarmentSqlServerDAO(Connection connection) {
 		super(connection);

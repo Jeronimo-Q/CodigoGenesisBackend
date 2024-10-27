@@ -15,7 +15,7 @@ import co.com.munamu.munamuinventory.entity.GarmentEntity;
 import co.com.munamu.munamuinventory.entity.SizeEntity;
 import co.com.munamu.munamuinventory.entity.SizePerGarmentEntity;
 
-public class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentDAO{
+final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentDAO{
 
 	protected SizePerGarmentSqlServerDAO(Connection connection) {
 		super(connection);

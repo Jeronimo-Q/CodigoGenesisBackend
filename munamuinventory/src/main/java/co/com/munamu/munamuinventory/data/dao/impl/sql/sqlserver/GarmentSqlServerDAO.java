@@ -15,7 +15,7 @@ import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
 import co.com.munamu.munamuinventory.entity.GarmentConfigurationEntity;
 import co.com.munamu.munamuinventory.entity.GarmentEntity;
 
-public class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
+final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 
 	protected GarmentSqlServerDAO(Connection connection) {
 		super(connection);
@@ -61,11 +61,19 @@ public class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 			final var result = preparedStatement.executeQuery();
 				
 			while (result.next()) {
+				
 				var garmentEntityTmp = new GarmentEntity();
+				var garmentConfigurationTmp = new GarmentConfigurationEntity();
+				
+				garmentConfigurationTmp.setId(UUIDHelper.convertToUUID("garmentConfiguration"));
+				
+				//Problemas en este punto necesito que se muestre lo que es el genero, la categoria y el tipo de la prenda no el UUID de lo que
+				//la configuracion de la prenda 
+			
 				garmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
-				garmentEntityTmp.setReference("reference");
-				garmentEntityTmp.setReference("description");
-				garmentEntityTmp.setGarmentConfiguration((GarmentConfigurationEntity) result.getObject("garmentConfiguration"));
+				garmentEntityTmp.setReference(result.getString("reference"));
+				garmentEntityTmp.setReference(result.getString("description"));
+				garmentEntityTmp.setGarmentConfiguration(garmentConfigurationTmp);
 				resultSelect.add(garmentEntityTmp);
 			}
 				

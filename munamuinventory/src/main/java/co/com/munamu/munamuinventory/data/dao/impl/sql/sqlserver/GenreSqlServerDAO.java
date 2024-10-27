@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.data.dao.GenreDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
 import co.com.munamu.munamuinventory.entity.GenreEntity;
 
-public final class GenreSqlServerDAO extends SqlDAO implements GenreDAO{
+final class GenreSqlServerDAO extends SqlDAO implements GenreDAO{
 
 	public GenreSqlServerDAO(final Connection connection) {
 		super(connection);

@@ -1,5 +1,6 @@
 package co.com.munamu.crosscutting.helpers;
 
+
 public class TextHelper {
 	
 	public static final String EMPTY = "";

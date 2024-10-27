@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.data.dao.SizeDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
 import co.com.munamu.munamuinventory.entity.SizeEntity;
 
-public class SizeSqlServerDAO extends SqlDAO implements SizeDAO{
+final class SizeSqlServerDAO extends SqlDAO implements SizeDAO{
 
 
 	protected SizeSqlServerDAO(final Connection connection) {

@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.data.dao.CategoryDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
 import co.com.munamu.munamuinventory.entity.CategoryEntity;
 
-public class CategorySqlServerDAO extends SqlDAO implements CategoryDAO{
+final class CategorySqlServerDAO extends SqlDAO implements CategoryDAO{
 
 	protected CategorySqlServerDAO(final Connection connection) {
 		super(connection);
