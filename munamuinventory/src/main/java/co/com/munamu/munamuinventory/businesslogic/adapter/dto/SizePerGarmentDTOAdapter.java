@@ -1,7 +1,13 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import co.com.munamu.crosscutting.helpers.ObjectHelper;
+import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
+import co.com.munamu.munamuinventory.domain.CategoryDomain;
+import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
 import co.com.munamu.munamuinventory.domain.SizePerGarmentDomain;
+import co.com.munamu.munamuinventory.dto.CategoryDTO;
+import co.com.munamu.munamuinventory.dto.GarmentDTO;
 import co.com.munamu.munamuinventory.dto.SizePerGarmentDTO;
 
 public class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,SizePerGarmentDTO> {
@@ -17,8 +23,13 @@ public class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,Si
 	}
 	
 	@Override
-	    public SizePerGarmentDomain adaptSource(final SizePerGarmentDTO data) {
-		 return null;
+		public SizePerGarmentDomain adaptSource(final SizePerGarmentDTO data) {
+	    var dtoToAdapt = ObjectHelper.getDefault(data, SizePerGarmentDTO.create());
+
+	    SizePerGarmentDomain SizePerGarmentDomain = 
+	    		SizePerGarmentDTOAdapter.SizePerGarmentEntityAdapter()
+	            .adaptSource(dtoToAdapt.getSizePerGarment());
+		
 	    }
 
 	    @Override
