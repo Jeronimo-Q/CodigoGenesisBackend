@@ -14,7 +14,7 @@ public final class CategoryDTOAdapter implements Adapter<CategoryDomain,Category
 		
 	}
 	
-	public static Adapter<CategoryDomain,CategoryDTO> getCategoryEntityAdapter(){
+	public static Adapter<CategoryDomain,CategoryDTO> getCategoryDTOAdapter(){
 		return instance;
 	}
 	@Override

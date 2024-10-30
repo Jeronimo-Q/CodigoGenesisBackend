@@ -23,7 +23,7 @@ public class GarmentConfigurationDomain extends Domain{
 		return new GarmentConfigurationDomain(id, category, genre, typeGarment);
 	}
 	
-	static final GarmentConfigurationDomain create() {
+    static final GarmentConfigurationDomain create() {
 		return new GarmentConfigurationDomain(UUIDHelper.getDefault(), CategoryDomain.create(), GenreDomain.create(), TypeGarmentDomain.create());
 	}
 

@@ -21,7 +21,7 @@ public class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurat
 		
 	}
 	
-	public static Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> getGarmentConfigurationEntityAdapter(){
+	public static Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> getGarmentConfigurationDTOAdapter(){
 		return instance;
 	}
 
@@ -31,20 +31,11 @@ public class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurat
 	    var dtoToAdapt = ObjectHelper.getDefault(data, GarmentConfigurationDTO.create());
 
 	   
-	    CategoryDomain categoryDomain = CategoryDomain.create(
-	        UUIDHelper.convertToUUID(dtoToAdapt.getCategory().getId()),
-	        dtoToAdapt.getCategory().getName() 
-	    );
+	    CategoryDomain categoryDomain = CategoryDTOAdapter.getCategoryDTOAdapter().adaptSource(dtoToAdapt.getCategory());
 
-	    GenreDomain genreDomain = GenreDomain.create(
-	        UUIDHelper.convertToUUID(dtoToAdapt.getGenre().getId()),
-	        dtoToAdapt.getGenre().getName() 
-	    );
+	    GenreDomain genreDomain = GenreDTOAdapter.getGenreDTOAdapter().adaptSource(dtoToAdapt.getGenre());
 
-	    TypeGarmentDomain typeGarmentDomain = TypeGarmentDomain.create(
-	    	    UUIDHelper.convertToUUID(dtoToAdapt.getTypeGarment().getId()),
-	    	    dtoToAdapt.getTypeGarment().getName() 
-	    	);
+	    TypeGarmentDomain typeGarmentDomain = TypeGarmentDTOAdapter.getTypeGarmentDTOAdapter().adaptSource(dtoToAdapt.getTypeGarment());
 
 	    return GarmentConfigurationDomain.create(
 	        UUIDHelper.convertToUUID(dtoToAdapt.getId()),
@@ -56,37 +47,27 @@ public class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurat
 	
 	@Override
 	public GarmentConfigurationDTO adaptTarget(final GarmentConfigurationDomain data) {
-	   
-	    var domainToAdapt = ObjectHelper.getDefault(
-	        data, GarmentConfigurationDomain.create(
-	            UUIDHelper.getDefault(),
-	            CategoryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY),
-	            GenreDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY),
-	            TypeGarmentDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY)
-	        )
-	    );
+		
+		var domainToAdapt = ObjectHelper.getDefault(data, GarmentConfigurationDomain.create(UUIDHelper.getDefault(),
+				CategoryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY), 
+				GenreDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY), 
+				TypeGarmentDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY)));
+		
+		CategoryDTO categoryDTO = CategoryDTOAdapter.getCategoryDTOAdapter().adaptTarget(domainToAdapt.getCategory());
+		
+		GenreDTO genreDTO = GenreDTOAdapter.getGenreDTOAdapter().adaptTarget(domainToAdapt.getGenre());
+		
+		TypeGarmentDTO typeGarmentDTO = TypeGarmentDTOAdapter.getTypeGarmentDTOAdapter().adaptTarget(domainToAdapt.getTypeGarment());
+		
+	    return GarmentConfigurationDTO.create().setId("").setCategory(categoryDTO).setGenre(genreDTO).setTypeGarment(typeGarmentDTO);
 
-	   
-	    CategoryDTO categoryDTO = CategoryDTO.create()
-	        .setId(domainToAdapt.getCategory().getId().toString())
-	        .setName(domainToAdapt.getCategory().getName());
-
-	   
-	    GenreDTO genreDTO = GenreDTO.create()
-	        .setId(domainToAdapt.getGenre().getId().toString())
-	        .setName(domainToAdapt.getGenre().getName());
-
-	   
-	    TypeGarmentDTO typeGarmentDTO = TypeGarmentDTO.create()
-	        .setId(domainToAdapt.getTypeGarment().getId().toString())
-	        .setName(domainToAdapt.getTypeGarment().getName());
-
-	   
-	    return GarmentConfigurationDTO.create()
-	        .setCategory(categoryDTO)
-	        .setGenre(genreDTO)
-	        .setTypeGarment(typeGarmentDTO);
 	}
+
+
+	
 }
+
+  
+
 
 

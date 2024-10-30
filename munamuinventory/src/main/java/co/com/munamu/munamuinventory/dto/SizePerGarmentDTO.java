@@ -10,7 +10,7 @@ public class SizePerGarmentDTO extends DomainDTO{
 	
 	public SizePerGarmentDTO() {
 		super(UUIDHelper.getDefaultAssString());
-		setGarmnet(GarmentDTO.create());
+		setGarment(GarmentDTO.create());
 		setSize(SizeDTO.create());
 	}
 	
@@ -27,11 +27,11 @@ public class SizePerGarmentDTO extends DomainDTO{
 		return this;
 	}
 
-	public GarmentDTO getGarmnet() {
+	public GarmentDTO getGarment() {
 		return garmnet;
 	}
 
-	public SizePerGarmentDTO setGarmnet(GarmentDTO garmnet) {
+	public SizePerGarmentDTO setGarment(GarmentDTO garmnet) {
 		this.garmnet = ObjectHelper.getDefault(garmnet, GarmentDTO.create());
 		return this;
 	}
