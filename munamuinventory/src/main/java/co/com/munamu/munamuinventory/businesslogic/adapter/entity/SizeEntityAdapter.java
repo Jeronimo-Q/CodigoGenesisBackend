@@ -7,7 +7,7 @@ import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
 import co.com.munamu.munamuinventory.domain.SizeDomain;
 import co.com.munamu.munamuinventory.entity.SizeEntity;
 
-public class SizeEntityAdapter implements Adapter<SizeDomain,SizeEntity> {
+public final class SizeEntityAdapter implements Adapter<SizeDomain,SizeEntity> {
 	private static final Adapter<SizeDomain,SizeEntity> instance = new SizeEntityAdapter();
 	
 	private SizeEntityAdapter() {

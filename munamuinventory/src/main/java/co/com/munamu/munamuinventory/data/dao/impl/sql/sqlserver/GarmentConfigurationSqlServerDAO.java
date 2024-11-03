@@ -67,9 +67,9 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 				var genreEntityTmp = new GenreEntity();
 				var typeGarmentEntityTmp = new TypeGarmentEntity();
 				
-				categoryEntityTmp.setName(result.getString("category"));
-				genreEntityTmp.setName(result.getString("genre"));
-				typeGarmentEntityTmp.setName(result.getString("typeGarment"));
+				categoryEntityTmp.setName(result.getString("name"));
+				genreEntityTmp.setName(result.getString("name"));
+				typeGarmentEntityTmp.setName(result.getString("name"));
 				
 				garmentConfigurationEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
 				garmentConfigurationEntityTmp.setCategory(categoryEntityTmp);

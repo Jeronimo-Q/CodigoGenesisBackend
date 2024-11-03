@@ -7,7 +7,7 @@ import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
 import co.com.munamu.munamuinventory.domain.SizeDomain;
 import co.com.munamu.munamuinventory.dto.SizeDTO;
 
-public class SizeDTOAdapter implements Adapter<SizeDomain,SizeDTO> {
+public final class SizeDTOAdapter implements Adapter<SizeDomain,SizeDTO> {
 	
 	private static final Adapter<SizeDomain,SizeDTO> instance = new SizeDTOAdapter();
 	

@@ -7,7 +7,7 @@ import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
 import co.com.munamu.munamuinventory.domain.GenreDomain;
 import co.com.munamu.munamuinventory.entity.GenreEntity;
 
-public class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity> {
+public final class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity> {
 	private static final Adapter<GenreDomain,GenreEntity> instance = new GenreEntityAdapter();
 	
 	private GenreEntityAdapter() {

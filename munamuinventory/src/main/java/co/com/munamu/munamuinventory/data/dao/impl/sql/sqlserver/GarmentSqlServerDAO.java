@@ -12,8 +12,11 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.DataMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.GarmentDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
+import co.com.munamu.munamuinventory.entity.CategoryEntity;
 import co.com.munamu.munamuinventory.entity.GarmentConfigurationEntity;
 import co.com.munamu.munamuinventory.entity.GarmentEntity;
+import co.com.munamu.munamuinventory.entity.GenreEntity;
+import co.com.munamu.munamuinventory.entity.TypeGarmentEntity;
 
 final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 
@@ -64,15 +67,23 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 				
 				var garmentEntityTmp = new GarmentEntity();
 				var garmentConfigurationTmp = new GarmentConfigurationEntity();
+				var categoryEntityTmp = new CategoryEntity();
+				var genreEntityTmp = new GenreEntity();
+				var typeGarmentEntityTmp = new TypeGarmentEntity();
+				
+				categoryEntityTmp.setName(result.getString("name"));
+				genreEntityTmp.setName(result.getString("name"));
+				typeGarmentEntityTmp.setName(result.getString("name"));
+				
 				
 				garmentConfigurationTmp.setId(UUIDHelper.convertToUUID("garmentConfiguration"));
-				
-				//Problemas en este punto necesito que se muestre lo que es el genero, la categoria y el tipo de la prenda no el UUID de lo que
-				//la configuracion de la prenda 
-			
+				garmentConfigurationTmp.setCategory(categoryEntityTmp);
+				garmentConfigurationTmp.setGenre(genreEntityTmp);
+				garmentConfigurationTmp.setTypeGarment(typeGarmentEntityTmp);
+
 				garmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
 				garmentEntityTmp.setReference(result.getString("reference"));
-				garmentEntityTmp.setReference(result.getString("description"));
+				garmentEntityTmp.setDescription((result.getString("description")));
 				garmentEntityTmp.setGarmentConfiguration(garmentConfigurationTmp);
 				resultSelect.add(garmentEntityTmp);
 			}

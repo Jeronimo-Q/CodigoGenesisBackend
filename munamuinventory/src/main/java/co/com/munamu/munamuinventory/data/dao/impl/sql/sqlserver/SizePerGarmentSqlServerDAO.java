@@ -63,7 +63,7 @@ final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentD
 			while (result.next()) {
 				var sizePerGarmentEntityTmp = new SizePerGarmentEntity();
 				sizePerGarmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
-				sizePerGarmentEntityTmp.setGarmnet((GarmentEntity) result.getObject("garment"));
+				sizePerGarmentEntityTmp.setGarment((GarmentEntity) result.getObject("garment"));
 				sizePerGarmentEntityTmp.setSize((SizeEntity) result.getObject("size"));
 				resultSelect.add(sizePerGarmentEntityTmp);
 			}
@@ -109,7 +109,7 @@ final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentD
 		try(final var preparedStatement = getConnection().prepareStatement(statement.toString())){
 			
 			preparedStatement.setObject(1, data.getId());
-			preparedStatement.setObject(2, data.getGarmnet().getId());
+			preparedStatement.setObject(2, data.getGarment().getId());
 			preparedStatement.setObject(3, data.getSize().getId());
 			
 			preparedStatement.executeUpdate();

@@ -6,7 +6,7 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 public class SizePerGarmentDTO extends DomainDTO{
 	
 	private SizeDTO size;
-	private GarmentDTO garmnet;
+	private GarmentDTO garment;
 	
 	public SizePerGarmentDTO() {
 		super(UUIDHelper.getDefaultAssString());
@@ -28,11 +28,11 @@ public class SizePerGarmentDTO extends DomainDTO{
 	}
 
 	public GarmentDTO getGarment() {
-		return garmnet;
+		return garment;
 	}
 
 	public SizePerGarmentDTO setGarment(GarmentDTO garmnet) {
-		this.garmnet = ObjectHelper.getDefault(garmnet, GarmentDTO.create());
+		this.garment = ObjectHelper.getDefault(garmnet, GarmentDTO.create());
 		return this;
 	}
 

@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.dto.GenreDTO;
 import co.com.munamu.munamuinventory.dto.TypeGarmentDTO;
 
 
-public class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> {
+public final class GarmentConfigurationDTOAdapter implements Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> {
 	private static final Adapter<GarmentConfigurationDomain,GarmentConfigurationDTO> instance = new GarmentConfigurationDTOAdapter();
 	
 	private GarmentConfigurationDTOAdapter() {

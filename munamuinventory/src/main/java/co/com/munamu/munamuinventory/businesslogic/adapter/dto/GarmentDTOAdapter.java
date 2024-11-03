@@ -14,7 +14,7 @@ import co.com.munamu.munamuinventory.dto.GarmentDTO;
 
 
 
-public class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
+public final class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
 	 
 	private static final Adapter<GarmentDomain,GarmentDTO> instance = new GarmentDTOAdapter();
 	
@@ -25,6 +25,7 @@ public class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
 	public static Adapter<GarmentDomain,GarmentDTO> getGarmentDTOAdapter(){
 		return instance;
 	}
+	
 	@Override
 	public GarmentDomain adaptSource(final GarmentDTO data) {
 	    var dtoToAdapt = ObjectHelper.getDefault(data, GarmentDTO.create());
@@ -48,8 +49,7 @@ public class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
 		    		GarmentConfigurationDomain.create(UUIDHelper.getDefault(),
 		    				CategoryDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY),
 		    				GenreDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY),
-		    				TypeGarmentDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY)
-		    				),
+		    				TypeGarmentDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY)),
 		    		TextHelper.EMPTY,
 		    		TextHelper.EMPTY));
 
@@ -58,12 +58,9 @@ public class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO> {
 
 		    return GarmentDTO.create().setId("").setGarmentConfiguration(garmentConfigurationDTO);
 
-		}
-
-
-		
-	    
 	}
+	    
+}
 	
 
 	

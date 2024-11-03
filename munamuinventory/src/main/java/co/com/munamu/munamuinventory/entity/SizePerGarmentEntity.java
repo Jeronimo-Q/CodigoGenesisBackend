@@ -8,11 +8,11 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 public class SizePerGarmentEntity extends DomainEntity{
 	
 	private SizeEntity size;
-	private GarmentEntity garmnet;
+	private GarmentEntity garment;
 	
 	public SizePerGarmentEntity() {
 		super(UUIDHelper.getDefault());
-		setGarmnet(GarmentEntity.create());
+		setGarment(GarmentEntity.create());
 		setSize(SizeEntity.create());
 	}
 	
@@ -29,12 +29,12 @@ public class SizePerGarmentEntity extends DomainEntity{
 		return this;
 	}
 
-	public GarmentEntity getGarmnet() {
-		return garmnet;
+	public GarmentEntity getGarment() {
+		return garment;
 	}
 
-	public SizePerGarmentEntity setGarmnet(GarmentEntity garmnet) {
-		this.garmnet = ObjectHelper.getDefault(garmnet, GarmentEntity.create());
+	public SizePerGarmentEntity setGarment(GarmentEntity garmnet) {
+		this.garment = ObjectHelper.getDefault(garmnet, GarmentEntity.create());
 		return this;
 	}
 

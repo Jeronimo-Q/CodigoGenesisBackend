@@ -15,14 +15,17 @@ import co.com.munamu.munamuinventory.dto.GarmentDTO;
 import co.com.munamu.munamuinventory.dto.SizeDTO;
 import co.com.munamu.munamuinventory.dto.SizePerGarmentDTO;
 
-public class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,SizePerGarmentDTO> {
+public final class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,SizePerGarmentDTO> {
 	 
 	private static final Adapter<SizePerGarmentDomain,SizePerGarmentDTO> instance = new SizePerGarmentDTOAdapter();
 	
 	private SizePerGarmentDTOAdapter() {
-		
 	}
 
+	public static Adapter<SizePerGarmentDomain,SizePerGarmentDTO> getSizePerGarmentDTOAdapter(){
+		return instance;
+	}
+	
 	@Override
 	public SizePerGarmentDomain adaptSource(final SizePerGarmentDTO data) {
 		var dtoToAdapt = ObjectHelper.getDefault(data, SizePerGarmentDTO.create());
@@ -36,8 +39,7 @@ public class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDomain,Si
 		return SizePerGarmentDomain.create(  
 		        UUIDHelper.convertToUUID(dtoToAdapt.getId()),
 		        sizeDomain,
-		        garmentDomain
-		    );
+		        garmentDomain);
 	}
 
 	@Override

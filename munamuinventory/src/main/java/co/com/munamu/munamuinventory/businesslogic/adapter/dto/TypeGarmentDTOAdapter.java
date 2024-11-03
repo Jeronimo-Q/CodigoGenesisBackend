@@ -8,7 +8,7 @@ import co.com.munamu.munamuinventory.domain.TypeGarmentDomain;
 import co.com.munamu.munamuinventory.dto.TypeGarmentDTO;
 
 
-public class TypeGarmentDTOAdapter implements Adapter<TypeGarmentDomain,TypeGarmentDTO> {
+public final class TypeGarmentDTOAdapter implements Adapter<TypeGarmentDomain,TypeGarmentDTO> {
 	private static final Adapter<TypeGarmentDomain,TypeGarmentDTO> instance = new TypeGarmentDTOAdapter();
 	
 	private TypeGarmentDTOAdapter() {
@@ -27,7 +27,8 @@ public class TypeGarmentDTOAdapter implements Adapter<TypeGarmentDomain,TypeGarm
 	    @Override
 	    public TypeGarmentDTO adaptTarget(final TypeGarmentDomain data) {
 			var domainToAdapt=ObjectHelper.getDefault(data,TypeGarmentDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
-			return TypeGarmentDTO.create().setId("").setName(domainToAdapt.getName());
+			
+			return TypeGarmentDTO.create().setId(TextHelper.EMPTY).setName(domainToAdapt.getName());
 	    
 }
 }

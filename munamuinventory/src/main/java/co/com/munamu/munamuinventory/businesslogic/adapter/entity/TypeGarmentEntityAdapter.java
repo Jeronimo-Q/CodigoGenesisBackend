@@ -7,7 +7,7 @@ import co.com.munamu.munamuinventory.businesslogic.adapter.Adapter;
 import co.com.munamu.munamuinventory.domain.TypeGarmentDomain;
 import co.com.munamu.munamuinventory.entity.TypeGarmentEntity;
 
-public class TypeGarmentEntityAdapter implements Adapter<TypeGarmentDomain,TypeGarmentEntity> {
+public final class TypeGarmentEntityAdapter implements Adapter<TypeGarmentDomain,TypeGarmentEntity> {
 	private static final Adapter<TypeGarmentDomain,TypeGarmentEntity> instance = new TypeGarmentEntityAdapter();
 	
 	private TypeGarmentEntityAdapter() {
@@ -20,7 +20,7 @@ public class TypeGarmentEntityAdapter implements Adapter<TypeGarmentDomain,TypeG
 	
 	@Override
 	public TypeGarmentDomain adaptSource(final TypeGarmentEntity data) {
-		var entityToAdapt=ObjectHelper.getDefault(data,TypeGarmentEntity.create());
+		var entityToAdapt = ObjectHelper.getDefault(data,TypeGarmentEntity.create());
 		return TypeGarmentDomain.create(entityToAdapt.getId(),entityToAdapt.getName());
 	}
 	
