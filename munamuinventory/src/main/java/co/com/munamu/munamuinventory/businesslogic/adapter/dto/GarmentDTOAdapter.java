@@ -27,11 +27,11 @@ public final class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO
 	}
 	
 	@Override
-	public GarmentDomain adaptSource(final GarmentDTO data) {
+	public GarmentDomain adaptTarjet(final GarmentDTO data) {
 	    var dtoToAdapt = ObjectHelper.getDefault(data, GarmentDTO.create());
 
 	    GarmentConfigurationDomain garmentConfigurationDomain = 
-	        GarmentConfigurationDTOAdapter.getGarmentConfigurationDTOAdapter().adaptSource(dtoToAdapt.getGarmentConfiguration());
+	        GarmentConfigurationDTOAdapter.getGarmentConfigurationDTOAdapter().adaptTarjet(dtoToAdapt.getGarmentConfiguration());
 	    
 	    
 	    return GarmentDomain.create(  
@@ -43,7 +43,7 @@ public final class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO
 	}
 
 	@Override
-	public GarmentDTO adaptTarget(final GarmentDomain data) {
+	public GarmentDTO adaptSource(final GarmentDomain data) {
 		    var domainToAdapt = ObjectHelper.getDefault(data, GarmentDomain.create(
 		    		UUIDHelper.getDefault(),
 		    		GarmentConfigurationDomain.create(UUIDHelper.getDefault(),
@@ -54,9 +54,9 @@ public final class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO
 		    		TextHelper.EMPTY));
 
 		    GarmentConfigurationDTO garmentConfigurationDTO = 
-		    		GarmentConfigurationDTOAdapter.getGarmentConfigurationDTOAdapter().adaptTarget(domainToAdapt.getGarmentConfiguration());
+		    		GarmentConfigurationDTOAdapter.getGarmentConfigurationDTOAdapter().adaptSource(domainToAdapt.getGarmentConfiguration());
 
-		    return GarmentDTO.create().setId("").setGarmentConfiguration(garmentConfigurationDTO);
+		    return GarmentDTO.create().setId(TextHelper.EMPTY).setGarmentConfiguration(garmentConfigurationDTO);
 
 	}
 	    

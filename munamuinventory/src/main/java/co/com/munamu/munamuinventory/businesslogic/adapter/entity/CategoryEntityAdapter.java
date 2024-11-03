@@ -19,13 +19,13 @@ public final class CategoryEntityAdapter implements Adapter<CategoryDomain,Categ
 	}
 	
 	@Override
-	public CategoryDomain adaptSource(final CategoryEntity data) {
+	public CategoryDomain adaptTarjet(final CategoryEntity data) {
 		var entityToAdapt=ObjectHelper.getDefault(data,CategoryEntity.create());
 		return CategoryDomain.create(entityToAdapt.getId(),entityToAdapt.getName());
 	}
 	
 	@Override
-	public CategoryEntity adaptTarget(final CategoryDomain data) {
+	public CategoryEntity adaptSource(final CategoryDomain data) {
 		var domainToAdapt = ObjectHelper.getDefault(data,
 				CategoryDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
 		

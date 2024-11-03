@@ -28,14 +28,14 @@ public final class SizePerGarmentEntityAdapter implements Adapter<SizePerGarment
 	}
 	
 	@Override
-	public SizePerGarmentDomain adaptSource(final SizePerGarmentEntity data) {
+	public SizePerGarmentDomain adaptTarjet(final SizePerGarmentEntity data) {
 		var entityToAdapt = ObjectHelper.getDefault(data, SizePerGarmentEntity.create());
 		
 		 GarmentDomain garmentDomain = 
-		            GarmentEntityAdapter.getGarmentEntityAdapter().adaptSource(entityToAdapt.getGarment());
+		            GarmentEntityAdapter.getGarmentEntityAdapter().adaptTarjet(entityToAdapt.getGarment());
 		    
 		    SizeDomain sizeDomain = 
-		            SizeEntityAdapter.getSizeEntityAdapter().adaptSource(entityToAdapt.getSize());
+		            SizeEntityAdapter.getSizeEntityAdapter().adaptTarjet(entityToAdapt.getSize());
 		
 		return SizePerGarmentDomain.create(  
 		        UUIDHelper.convertToUUID(entityToAdapt.getId()),
@@ -44,7 +44,7 @@ public final class SizePerGarmentEntityAdapter implements Adapter<SizePerGarment
 		    );
 	}
 	@Override
-	public SizePerGarmentEntity adaptTarget(final SizePerGarmentDomain data) {
+	public SizePerGarmentEntity adaptSource(final SizePerGarmentDomain data) {
 		
 	    var domainToAdapt = ObjectHelper.getDefault(
 		        data, 
@@ -59,9 +59,9 @@ public final class SizePerGarmentEntityAdapter implements Adapter<SizePerGarment
 		        )
 		    );
 
-		    SizeEntity sizeEntity = SizeEntityAdapter.getSizeEntityAdapter().adaptTarget(domainToAdapt.getSize());
+		    SizeEntity sizeEntity = SizeEntityAdapter.getSizeEntityAdapter().adaptSource(domainToAdapt.getSize());
 		    
-		    GarmentEntity garmentEntity = GarmentEntityAdapter.getGarmentEntityAdapter().adaptTarget(domainToAdapt.getGarment());
+		    GarmentEntity garmentEntity = GarmentEntityAdapter.getGarmentEntityAdapter().adaptSource(domainToAdapt.getGarment());
 		    
 		    var entityAdapted = new SizePerGarmentEntity();
 		    entityAdapted.setId(domainToAdapt.getId());

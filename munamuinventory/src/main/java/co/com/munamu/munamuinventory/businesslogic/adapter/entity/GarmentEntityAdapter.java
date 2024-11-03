@@ -25,11 +25,11 @@ public final class GarmentEntityAdapter implements Adapter<GarmentDomain,Garment
 	
 	
 	@Override
-	public GarmentDomain adaptSource(final GarmentEntity data) {
+	public GarmentDomain adaptTarjet(final GarmentEntity data) {
 	    var entityToAdapt = ObjectHelper.getDefault(data, GarmentEntity.create());
 
 	    GarmentConfigurationDomain garmentConfigurationDomain = 
-	        GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptSource(entityToAdapt.getGarmentConfiguration());
+	        GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptTarjet(entityToAdapt.getGarmentConfiguration());
 	    
 	    
 	    return GarmentDomain.create(  
@@ -41,7 +41,7 @@ public final class GarmentEntityAdapter implements Adapter<GarmentDomain,Garment
 	}
 	
 	@Override
-	public GarmentEntity adaptTarget(final GarmentDomain data) {
+	public GarmentEntity adaptSource(final GarmentDomain data) {
 	    var domainToAdapt = ObjectHelper.getDefault(data, GarmentDomain.create(
 	    		UUIDHelper.getDefault(),
 	    		GarmentConfigurationDomain.create(UUIDHelper.getDefault(),
@@ -52,7 +52,7 @@ public final class GarmentEntityAdapter implements Adapter<GarmentDomain,Garment
 	    		TextHelper.EMPTY));
 
 	    GarmentConfigurationEntity garmentConfigurationEntity = 
-	    		GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptTarget(domainToAdapt.getGarmentConfiguration());
+	    		GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptSource(domainToAdapt.getGarmentConfiguration());
 	    
 	    var entityAdapted = new GarmentEntity();
 	    entityAdapted.setId(domainToAdapt.getId());

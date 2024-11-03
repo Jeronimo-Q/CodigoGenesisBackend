@@ -2,8 +2,8 @@ package co.com.munamu.munamuinventory.businesslogic.adapter;
 
 public interface Adapter<D,T> {
 	
-	D adaptSource (T data);
+	D adaptTarjet (T data);
 	
-	T adaptTarget (D data);
+	T adaptSource (D data);
 
 }

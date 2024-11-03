@@ -25,15 +25,15 @@ public final class GarmentConfigurationEntityAdapter implements Adapter<GarmentC
 	}
 	
 	@Override
-	public GarmentConfigurationDomain adaptSource(final GarmentConfigurationEntity data) {
+	public GarmentConfigurationDomain adaptTarjet(final GarmentConfigurationEntity data) {
 	    var entityToAdapt = ObjectHelper.getDefault(data, GarmentConfigurationEntity.create());
 
 		   
-	    CategoryDomain categoryDomain = CategoryEntityAdapter.getCategoryEntityAdapter().adaptSource(entityToAdapt.getCategory());
+	    CategoryDomain categoryDomain = CategoryEntityAdapter.getCategoryEntityAdapter().adaptTarjet(entityToAdapt.getCategory());
 
-	    GenreDomain genreDomain = GenreEntityAdapter.getGenreEntityAdapter().adaptSource(entityToAdapt.getGenre());
+	    GenreDomain genreDomain = GenreEntityAdapter.getGenreEntityAdapter().adaptTarjet(entityToAdapt.getGenre());
 
-	    TypeGarmentDomain typeGarmentDomain = TypeGarmentEntityAdapter.getTypeGarmentEntityAdapter().adaptSource(entityToAdapt.getTypeGarment());
+	    TypeGarmentDomain typeGarmentDomain = TypeGarmentEntityAdapter.getTypeGarmentEntityAdapter().adaptTarjet(entityToAdapt.getTypeGarment());
 
 	    return GarmentConfigurationDomain.create(
 	        UUIDHelper.convertToUUID(entityToAdapt.getId()),
@@ -44,17 +44,17 @@ public final class GarmentConfigurationEntityAdapter implements Adapter<GarmentC
 	}
 	
 	@Override
-	public GarmentConfigurationEntity adaptTarget(final GarmentConfigurationDomain data) {
+	public GarmentConfigurationEntity adaptSource(final GarmentConfigurationDomain data) {
 		var domainToAdapt = ObjectHelper.getDefault(data, GarmentConfigurationDomain.create(UUIDHelper.getDefault(),
 				CategoryDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY), 
 				GenreDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY), 
 				TypeGarmentDomain.create(UUIDHelper.getDefault(), TextHelper.EMPTY)));
 		
-		CategoryEntity categoryEntity = CategoryEntityAdapter.getCategoryEntityAdapter().adaptTarget(domainToAdapt.getCategory());
+		CategoryEntity categoryEntity = CategoryEntityAdapter.getCategoryEntityAdapter().adaptSource(domainToAdapt.getCategory());
 		
-		GenreEntity genreEntity = GenreEntityAdapter.getGenreEntityAdapter().adaptTarget(domainToAdapt.getGenre());
+		GenreEntity genreEntity = GenreEntityAdapter.getGenreEntityAdapter().adaptSource(domainToAdapt.getGenre());
 		
-		TypeGarmentEntity typeGarmentEntity = TypeGarmentEntityAdapter.getTypeGarmentEntityAdapter().adaptTarget(domainToAdapt.getTypeGarment());
+		TypeGarmentEntity typeGarmentEntity = TypeGarmentEntityAdapter.getTypeGarmentEntityAdapter().adaptSource(domainToAdapt.getTypeGarment());
 		
 		var entityAdapted = new GarmentConfigurationEntity();
 		entityAdapted.setId(domainToAdapt.getId());
