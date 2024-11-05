@@ -1,24 +1,26 @@
-package co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.impl;
+package co.com.munamu.munamuinventory.businesslogic.usecase.garment.impl;
 
 import java.util.UUID;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
-import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentConfigurationEntityAdapter;
-import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.DeleteGarmentConfiguration;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.DeleteGarmentConfiguration;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.BusinessLogicMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.DAOFactory;
 
-public final class DeleteGarmentConfigurationImpl implements DeleteGarmentConfiguration{
+public final class DeleteGarmentImpl implements DeleteGarmentConfiguration{
 
 	private DAOFactory daoFactory;
 	
-	public DeleteGarmentConfigurationImpl(DAOFactory daoFactory){
+	public DeleteGarmentImpl(DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
 	}
 	
 	@Override
 	public void execute(final UUID data) {
+		//validar politicas
 		
+		
+		daoFactory.getGarmentDAO().delete(data);
 	}
 
 	

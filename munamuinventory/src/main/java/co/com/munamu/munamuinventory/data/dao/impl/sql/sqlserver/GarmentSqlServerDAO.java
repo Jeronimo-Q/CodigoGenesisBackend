@@ -102,7 +102,7 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 	}
 
 	@Override
-	public void delete(GarmentEntity data) {
+	public void delete(UUID data) {
 		final StringBuilder statement = new StringBuilder();
 		statement.append("DELETE FROM Garment WHERE id = ? ");
 		

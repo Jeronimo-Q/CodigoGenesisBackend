@@ -1,27 +1,27 @@
-package co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.impl;
+package co.com.munamu.munamuinventory.businesslogic.usecase.garment.impl;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
-import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentConfigurationEntityAdapter;
-import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.RegisterNewGarmentConfiguration;
+import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentEntityAdapter;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.RegisterNewGarment;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.BusinessLogicMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.DAOFactory;
-import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
+import co.com.munamu.munamuinventory.domain.GarmentDomain;
 
-public final class RegisterNewGarmentConfigurationImpl implements RegisterNewGarmentConfiguration{
+public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 
 	private DAOFactory daoFactory;
 	
-	public RegisterNewGarmentConfigurationImpl(DAOFactory daoFactory){
+	public RegisterNewGarmentImpl( DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
 	}
 	
 	@Override
-	public void execute(final GarmentConfigurationDomain data) {
+	public void execute(final GarmentDomain data) {
 		//Validar las politicas
 		
 		
-		var garmentConfigurationEntity = GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptSource(data);
-		daoFactory.getGarmentConfigurationDAO().create(garmentConfigurationEntity);
+		var garmentEntity = GarmentEntityAdapter.getGarmentEntityAdapter().adaptSource(data);
+		daoFactory.getGarmentDAO().create(garmentEntity);
 		
 	}
 

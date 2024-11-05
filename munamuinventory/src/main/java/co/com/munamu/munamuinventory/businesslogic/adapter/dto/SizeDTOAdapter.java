@@ -1,5 +1,7 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import java.util.List;
+
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
@@ -30,4 +32,14 @@ public final class SizeDTOAdapter implements Adapter<SizeDomain,SizeDTO> {
 			return SizeDTO.create().setId(TextHelper.EMPTY).setName(domainToAdapt.getName());
 	    
 }
+		@Override
+		public List<SizeDTO> adaptSource(List<SizeDomain> data) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		@Override
+		public List<SizeDomain> adaptTarjet(List<SizeDTO> data) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

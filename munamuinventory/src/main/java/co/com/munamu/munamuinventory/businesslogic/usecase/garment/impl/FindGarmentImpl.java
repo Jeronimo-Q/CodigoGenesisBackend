@@ -1,26 +1,30 @@
-package co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.impl;
+package co.com.munamu.munamuinventory.businesslogic.usecase.garment.impl;
 
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
-import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.FindGarmentConfiguration;
+import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentEntityAdapter;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.FindGarmentConfiguration;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.BusinessLogicMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.DAOFactory;
-import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
+import co.com.munamu.munamuinventory.domain.GarmentDomain;
 
-public final class FindGarmentConfigurationImpl implements FindGarmentConfiguration{
+
+public final class FindGarmentImpl implements FindGarmentConfiguration{
 	
 	private DAOFactory daoFactory;
 	
-	public FindGarmentConfigurationImpl(DAOFactory daoFactory){
+	public FindGarmentImpl(DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
 	}
 
 	@Override
-	public List<GarmentConfigurationDomain> execute(final GarmentConfigurationDomain data) {
+	public List<GarmentDomain> execute(final GarmentDomain data) {
 		
+		var garmentEntity = GarmentEntityAdapter.getGarmentEntityAdapter().adaptSource(data);
+		var result = daoFactory.getGarmentDAO().findByFilter(garmentEntity);	
 		
-		return null;
+		return GarmentEntityAdapter.getGarmentEntityAdapter().adaptTarjet(result);
 	}
 
 	public void setDaoFactory(final DAOFactory daoFactory) {

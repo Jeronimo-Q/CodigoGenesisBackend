@@ -82,7 +82,7 @@ final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentD
 	}
 
 	@Override
-	public void delete(SizePerGarmentEntity data) {
+	public void delete(UUID data) {
 		final StringBuilder statement = new StringBuilder();
 		statement.append("DELETE FROM SizePerGarment WHERE id = ? ");
 		

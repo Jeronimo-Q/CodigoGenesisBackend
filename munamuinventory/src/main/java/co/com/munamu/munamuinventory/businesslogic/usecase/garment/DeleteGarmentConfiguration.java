@@ -1,4 +1,4 @@
-package co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration;
+package co.com.munamu.munamuinventory.businesslogic.usecase.garment;
 
 import java.util.UUID;
 

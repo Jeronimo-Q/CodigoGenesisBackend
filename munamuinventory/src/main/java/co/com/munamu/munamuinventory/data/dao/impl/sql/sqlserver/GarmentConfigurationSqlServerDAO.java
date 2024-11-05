@@ -91,7 +91,7 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 	}
 
 	@Override
-	public void delete(GarmentConfigurationEntity data) {
+	public void delete(UUID data) {
 		final StringBuilder statement = new StringBuilder();
 		statement.append("DELETE FROM GarmentConfiguration WHERE id = ? ");
 

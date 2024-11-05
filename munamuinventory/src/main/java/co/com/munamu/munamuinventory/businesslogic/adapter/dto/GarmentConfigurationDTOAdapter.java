@@ -1,5 +1,7 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import java.util.List;
+
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.TextHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
@@ -61,6 +63,18 @@ public final class GarmentConfigurationDTOAdapter implements Adapter<GarmentConf
 		
 	    return GarmentConfigurationDTO.create().setId(TextHelper.EMPTY).setCategory(categoryDTO).setGenre(genreDTO).setTypeGarment(typeGarmentDTO);
 
+	}
+
+	@Override
+	public List<GarmentConfigurationDTO> adaptSource(List<GarmentConfigurationDomain> data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GarmentConfigurationDomain> adaptTarjet(List<GarmentConfigurationDTO> data) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
