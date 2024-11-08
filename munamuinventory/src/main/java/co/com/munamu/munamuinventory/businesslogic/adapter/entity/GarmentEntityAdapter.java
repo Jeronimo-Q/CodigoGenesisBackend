@@ -79,8 +79,13 @@ public final class GarmentEntityAdapter implements Adapter<GarmentDomain,Garment
 
 	@Override
 	public List<GarmentDomain> adaptTarjet(List<GarmentEntity> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<GarmentDomain>();
+		
+		for (GarmentEntity entity:data) {
+			results.add(adaptTarjet(entity));
+		}
+		
+		return results;
 	}
 
 

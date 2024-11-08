@@ -14,14 +14,10 @@ public final class UUIDHelper {
 		return UUID.fromString(uuidAsString);
 	}
 
-	public static final UUID convertToUUID(final Object uuidAsObject) {
-		return convertToUUID(ObjectHelper.getDefault(uuidAsObject, "").toString());
-	}
-
 	public static final UUID getDefault(final UUID value, final UUID defaultValue) {
 		return ObjectHelper.getDefault(value, defaultValue);
 	}
-
+	
 	public static final String getDefaultAssString() {
 		return DEFAULT_UUID_STRING;
 	}
@@ -35,10 +31,18 @@ public final class UUIDHelper {
 	}
 
 	public static final boolean isDefault(final UUID value) {
-		return getDefault(value, getDefault()).equals(getDefault());
+		return isEqual(value, getDefault());
 	}
 
 	public static final boolean isDefault(final String uuidAsString) {
-		return getDefault(convertToUUID(uuidAsString), getDefault()).equals(getDefault());
+		return isDefault(convertToUUID(uuidAsString));
+	}
+	
+	public static final boolean isEqual(final UUID valueOne, final UUID valueTwo) {
+		return getDefault(valueOne, getDefault()).compareTo(getDefault(valueTwo, getDefault())) == 0;
+	}
+	
+	public static final UUID convertToUUID(final Object uuidAsObject) {
+		return convertToUUID(ObjectHelper.getDefault(uuidAsObject, TextHelper.EMPTY).toString());
 	}
 }

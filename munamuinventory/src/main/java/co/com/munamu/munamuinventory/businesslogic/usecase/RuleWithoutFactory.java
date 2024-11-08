@@ -1,7 +1,7 @@
 package co.com.munamu.munamuinventory.businesslogic.usecase;
 
-public interface Rule<T> {
-	
+
+public interface RuleWithoutFactory<T> {
 	void execute(T data);
 
 }
