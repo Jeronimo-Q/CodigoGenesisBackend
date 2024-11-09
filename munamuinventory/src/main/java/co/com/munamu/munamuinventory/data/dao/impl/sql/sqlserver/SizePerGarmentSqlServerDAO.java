@@ -137,6 +137,16 @@ final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentD
 				statemet.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			}
+			if(!ObjectHelper.isNull(filter.getGarment())) {
+				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
+				statemet.append("garment = ? ");
+				parameters.add(filter.getId());
+			}
+			if(!ObjectHelper.isNull(filter.getSize())) {
+				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
+				statemet.append("size = ? ");
+				parameters.add(filter.getId());
+			}
 		}
 	}
 

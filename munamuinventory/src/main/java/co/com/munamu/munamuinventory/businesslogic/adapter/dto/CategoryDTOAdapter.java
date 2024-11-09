@@ -1,5 +1,6 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
@@ -33,13 +34,23 @@ public final class CategoryDTOAdapter implements Adapter<CategoryDomain,Category
 
 	@Override
 	public List<CategoryDTO> adaptSource(List<CategoryDomain> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<CategoryDTO>();
+		
+		for (CategoryDomain domain:data) {
+			results.add(adaptSource(domain));
+		}
+		
+		return results;
 	}
 
 	@Override
 	public List<CategoryDomain> adaptTarjet(List<CategoryDTO> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<CategoryDomain>();
+		
+		for (CategoryDTO entity:data) {
+			results.add(adaptTarjet(entity));
+		}
+		
+		return results;
 	}
 }

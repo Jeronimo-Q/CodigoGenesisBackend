@@ -1,5 +1,6 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
@@ -75,14 +76,24 @@ public final class SizePerGarmentEntityAdapter implements Adapter<SizePerGarment
 
 	@Override
 	public List<SizePerGarmentEntity> adaptSource(List<SizePerGarmentDomain> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<SizePerGarmentEntity>();
+		
+		for (SizePerGarmentDomain domain:data) {
+			results.add(adaptSource(domain));
+		}
+		
+		return results;
 	}
 
 	@Override
 	public List<SizePerGarmentDomain> adaptTarjet(List<SizePerGarmentEntity> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<SizePerGarmentDomain>();
+		
+		for (SizePerGarmentEntity entity:data) {
+			results.add(adaptTarjet(entity));
+		}
+		
+		return results;
 	}
 }
 

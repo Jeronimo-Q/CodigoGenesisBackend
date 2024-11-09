@@ -47,7 +47,7 @@ public final class SqlServerDAOFactory extends DAOFactory{
 	}
 
 	@Override
-	public void closeTransaction() {
+	public void closeConnection() {
 		SqlConnectionHelper.closeConnection(connection);
 	}
 

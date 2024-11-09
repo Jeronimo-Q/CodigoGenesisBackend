@@ -163,6 +163,16 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 				statemet.append("referencia = ? ");
 				parameters.add(filter.getId());
 			}
+			if(!TextHelper.isEmptyAppplyingTrim(filter.getDescription())) {
+				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
+				statemet.append("descripcion = ? ");
+				parameters.add(filter.getId());
+			}
+			if(!ObjectHelper.isNull(filter.getGarmentConfiguration())) {
+				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
+				statemet.append("garmentConfiguration = ? ");
+				parameters.add(filter.getId());
+			}
 		}
 		
 	}

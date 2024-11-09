@@ -1,5 +1,6 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
@@ -40,14 +41,24 @@ public final class GenreEntityAdapter implements Adapter<GenreDomain,GenreEntity
 
 	@Override
 	public List<GenreEntity> adaptSource(List<GenreDomain> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<GenreEntity>();
+		
+		for (GenreDomain domain:data) {
+			results.add(adaptSource(domain));
+		}
+		
+		return results;
 	}
 
 	@Override
 	public List<GenreDomain> adaptTarjet(List<GenreEntity> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<GenreDomain>();
+		
+		for (GenreEntity entity:data) {
+			results.add(adaptTarjet(entity));
+		}
+		
+		return results;
 	}
 }
 

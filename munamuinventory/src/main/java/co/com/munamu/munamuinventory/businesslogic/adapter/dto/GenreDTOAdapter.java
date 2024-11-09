@@ -1,5 +1,6 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
@@ -37,13 +38,23 @@ public final class GenreDTOAdapter implements Adapter<GenreDomain,GenreDTO> {
 
 			@Override
 			public List<GenreDTO> adaptSource(List<GenreDomain> data) {
-				// TODO Auto-generated method stub
-				return null;
+				var results = new ArrayList<GenreDTO>();
+				
+				for (GenreDomain domain:data) {
+					results.add(adaptSource(domain));
+				}
+				
+				return results;
 			}
 
 			@Override
 			public List<GenreDomain> adaptTarjet(List<GenreDTO> data) {
-				// TODO Auto-generated method stub
-				return null;
+				var results = new ArrayList<GenreDomain>();
+				
+				for (GenreDTO entity:data) {
+					results.add(adaptTarjet(entity));
+				}
+				
+				return results;
 			}
 }

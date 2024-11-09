@@ -29,7 +29,6 @@ public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 	
 	@Override
 	public void execute(final GarmentDomain data) {
-		//Validar las politicas
 		
 		garmentReferenceConsistencyIsValidImpl.execute(data.getReference());
 		garmentReferenceDoesNotExistImpl.execute(data, daoFactory);
@@ -44,8 +43,8 @@ public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 
 	public void setDaoFactory(final DAOFactory daoFactory) {
 		if(ObjectHelper.isNull(daoFactory)) {
-			var userMessage = "Se ha presentado un problema inesperado tratando de llevar a cabo el registro de la nueva configuración de la prenda deseada. Por favor intente de nuevo y si el problema persiste, llame a los tecnicos";
-			var technicalMessage = "El dao factory requerido para crear la clase que crea la configuracion de la prenda llego nula.";
+			var userMessage = "Se ha presentado un problema inesperado tratando de llevar a cabo el registro de la nueva prenda deseada. Por favor intente de nuevo y si el problema persiste, llame a los tecnicos";
+			var technicalMessage = "El dao factory requerido para crear la clase que crea la prenda llego nula.";
 			throw BusinessLogicMunamuInventoryException.create(userMessage,technicalMessage,new Exception());
 		}
 		this.daoFactory = daoFactory;

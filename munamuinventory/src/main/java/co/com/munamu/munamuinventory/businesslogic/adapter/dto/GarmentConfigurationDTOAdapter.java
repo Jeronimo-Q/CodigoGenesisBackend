@@ -1,5 +1,6 @@
 package co.com.munamu.munamuinventory.businesslogic.adapter.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
@@ -67,14 +68,24 @@ public final class GarmentConfigurationDTOAdapter implements Adapter<GarmentConf
 
 	@Override
 	public List<GarmentConfigurationDTO> adaptSource(List<GarmentConfigurationDomain> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<GarmentConfigurationDTO>();
+		
+		for (GarmentConfigurationDomain domain:data) {
+			results.add(adaptSource(domain));
+		}
+		
+		return results;
 	}
 
 	@Override
 	public List<GarmentConfigurationDomain> adaptTarjet(List<GarmentConfigurationDTO> data) {
-		// TODO Auto-generated method stub
-		return null;
+		var results = new ArrayList<GarmentConfigurationDomain>();
+		
+		for (GarmentConfigurationDTO entity:data) {
+			results.add(adaptTarjet(entity));
+		}
+		
+		return results;
 	}
 
 
