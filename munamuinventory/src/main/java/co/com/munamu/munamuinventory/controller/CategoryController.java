@@ -34,12 +34,14 @@ public final class CategoryController {
 		
 		var message = new ArrayList<String>();
 		
+		message.add("hola");
+		
 		
 		try {
 			FindCategoryFacade findCategory = new FindCategoryFacadeImpl();
-			List<CategoryDTO> list = findCategory.execute();
+			List<CategoryDTO> categories = findCategory.execute();
 			
-			responseWithData.setData(list);
+			responseWithData.setData(categories);
 			responseWithData.setMessages(message);
 			
 			return ((new GeneratedResponse<CategoryResponse>()).generateSuccessResponseWithData(responseWithData));
@@ -56,7 +58,7 @@ public final class CategoryController {
 			return ((new GeneratedResponse<CategoryResponse>()).generateFailedResponseWithData(responseWithData));
 		}catch (final Exception exception) {
 			message.add(
-					"Se ha presentado un problema inesperado tratando de llevar a cabo el registro de la ciudad de forma satisfactoria");
+					"Se ha presentado un problema inesperado tratando de llevar a cabo la consulta de la categoria satisfactoria");
 		}
 		
 		message.add("Las categorias se consultaron de forma satisfactoria");

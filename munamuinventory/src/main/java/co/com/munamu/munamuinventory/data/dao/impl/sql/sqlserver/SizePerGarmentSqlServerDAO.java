@@ -133,19 +133,19 @@ final class SizePerGarmentSqlServerDAO extends SqlDAO implements SizePerGarmentD
 	
 	private void createWhere(final StringBuilder statemet, final SizePerGarmentEntity filter, final ArrayList<Object> parameters) {
 		if(!ObjectHelper.isNull(filter)) {
-			if(UUIDHelper.isDefault(filter.getId())) {
+			if(!UUIDHelper.isDefault(filter.getId())) {
 				statemet.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			}
 			if(!ObjectHelper.isNull(filter.getGarment())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("garment = ? ");
-				parameters.add(filter.getId());
+				parameters.add(filter.getGarment());
 			}
 			if(!ObjectHelper.isNull(filter.getSize())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("size = ? ");
-				parameters.add(filter.getId());
+				parameters.add(filter.getSize());
 			}
 		}
 	}

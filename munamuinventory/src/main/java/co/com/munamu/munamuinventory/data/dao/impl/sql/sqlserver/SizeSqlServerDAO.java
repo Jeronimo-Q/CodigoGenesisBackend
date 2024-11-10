@@ -90,14 +90,14 @@ final class SizeSqlServerDAO extends SqlDAO implements SizeDAO{
 	
 	private void createWhere(final StringBuilder statemet, final SizeEntity filter, final ArrayList<Object> parameters) {
 		if(!ObjectHelper.isNull(filter)) {
-			if(UUIDHelper.isDefault(filter.getId())) {
+			if(!UUIDHelper.isDefault(filter.getId())) {
 				statemet.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			}
 			if(!TextHelper.isEmptyAppplyingTrim(filter.getName())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("name = ? ");
-				parameters.add(filter.getId());
+				parameters.add(filter.getName());
 			}
 		}
 		

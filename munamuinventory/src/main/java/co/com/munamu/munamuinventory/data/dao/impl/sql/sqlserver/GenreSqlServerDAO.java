@@ -80,7 +80,7 @@ final class GenreSqlServerDAO extends SqlDAO implements GenreDAO{
 	}
 
 	private void createSelect(final StringBuilder statement) {
-		statement.append("SELECT id, name ");
+		statement.append("SELECT id , name ");
 	} 
 
 	private void createFrom(final StringBuilder statement) {
@@ -89,7 +89,7 @@ final class GenreSqlServerDAO extends SqlDAO implements GenreDAO{
 	
 	private void createWhere(final StringBuilder statemet, final GenreEntity filter, final ArrayList<Object> parameters) {
 		if(!ObjectHelper.isNull(filter)) {
-			if(UUIDHelper.isDefault(filter.getId())) {
+			if(!UUIDHelper.isDefault(filter.getId())) {
 				statemet.append("WHERE id = ? ");
 				parameters.add(filter.getId());
 			}
