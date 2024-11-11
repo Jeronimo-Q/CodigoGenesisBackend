@@ -16,7 +16,7 @@ public class GarmentReferenceDoesNotExistImpl implements GarmentReferenceDoesNot
 		
 		var results = factory.getGarmentDAO().findByFilter(garment);
 		
-		if(results.isEmpty()) {
+		if(!results.isEmpty()) {
 			var userMessage = "Ya existe una prenda con la referencia "+results.get(0).getReference()+" ...";
 			throw BusinessLogicMunamuInventoryException.create(userMessage);
 		}

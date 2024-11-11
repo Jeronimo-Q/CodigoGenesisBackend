@@ -12,12 +12,12 @@ public class GarmentDescriptionDoesNotExistImpl implements GarmentDescriptionDoe
 	public void execute(final GarmentDomain data,final DAOFactory factory) {
 		final var garment = new GarmentEntity();
 
-		garment.setDescription(data.getReference());
+		garment.setDescription(data.getDescription());
 		
 		var results = factory.getGarmentDAO().findByFilter(garment);
 		
-		if(results.isEmpty()) {
-			var userMessage = "Ya existe una prenda con la referencia "+results.get(0).getDescription()+" ...";
+		if(!results.isEmpty()) {
+			var userMessage = "Ya existe una prenda con la descripción "+results.get(0).getDescription()+" ...";
 			throw BusinessLogicMunamuInventoryException.create(userMessage);
 		}
 		

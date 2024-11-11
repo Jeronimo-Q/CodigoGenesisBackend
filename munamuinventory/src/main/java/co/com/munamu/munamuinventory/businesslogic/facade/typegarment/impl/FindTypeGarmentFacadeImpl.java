@@ -27,7 +27,7 @@ public class FindTypeGarmentFacadeImpl implements FindTypeGarmentFacade{
 			throw exception;
 		} catch (final Exception exception) {
 			factory.rollbackTransaction();
-			var userMessage = "Se ha presentado un problema tratando de consultar la informacion de los tipo de prenda...";
+			var userMessage = "Se ha presentado un problema tratando de consultar la informacion de los tipo de prendas...";
 			var technicalMessage = "Se ha presentado un problema inesperado al trartar de consultar la informacion de los tipos de prenda. Por favor revise el log de errores para tener mas detalles";
 			
 			throw BusinessLogicMunamuInventoryException.create(userMessage,technicalMessage,exception);

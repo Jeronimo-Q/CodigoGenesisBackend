@@ -12,12 +12,8 @@ import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.DataMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.GarmentDAO;
 import co.com.munamu.munamuinventory.data.dao.impl.sql.SqlDAO;
-import co.com.munamu.munamuinventory.entity.CategoryEntity;
 import co.com.munamu.munamuinventory.entity.GarmentConfigurationEntity;
 import co.com.munamu.munamuinventory.entity.GarmentEntity;
-import co.com.munamu.munamuinventory.entity.GenreEntity;
-import co.com.munamu.munamuinventory.entity.TypeGarmentEntity;
-
 final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 
 	protected GarmentSqlServerDAO(Connection connection) {
@@ -62,24 +58,13 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 			statementWasPrepared = true;
 			
 			final var result = preparedStatement.executeQuery();
-				
+
 			while (result.next()) {
 				
 				var garmentEntityTmp = new GarmentEntity();
 				var garmentConfigurationTmp = new GarmentConfigurationEntity();
-				var categoryEntityTmp = new CategoryEntity();
-				var genreEntityTmp = new GenreEntity();
-				var typeGarmentEntityTmp = new TypeGarmentEntity();
 				
-				categoryEntityTmp.setName(result.getString("name"));
-				genreEntityTmp.setName(result.getString("name"));
-				typeGarmentEntityTmp.setName(result.getString("name"));
-				
-				
-				garmentConfigurationTmp.setId(UUIDHelper.convertToUUID("garmentConfiguration"));
-				garmentConfigurationTmp.setCategory(categoryEntityTmp);
-				garmentConfigurationTmp.setGenre(genreEntityTmp);
-				garmentConfigurationTmp.setTypeGarment(typeGarmentEntityTmp);
+				garmentConfigurationTmp.setId(UUIDHelper.convertToUUID(result.getObject("garmentConfiguration")));
 
 				garmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
 				garmentEntityTmp.setReference(result.getString("reference"));
@@ -145,7 +130,7 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 	}
 
 	private void createSelect(final StringBuilder statement) {
-		statement.append("SELECT id, referencia, descripcion, garmentConfiguration ");
+		statement.append("SELECT id, reference, description, garmentConfiguration ");
 	} 
 
 	private void createFrom(final StringBuilder statement) {
@@ -160,25 +145,25 @@ final class GarmentSqlServerDAO extends SqlDAO implements GarmentDAO{
 			}
 			if(!TextHelper.isEmptyAppplyingTrim(filter.getReference())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
-				statemet.append("referencia = ? ");
-				parameters.add(filter.getId());
+				statemet.append("reference = ? ");
+				parameters.add(filter.getReference());
 			}
 			if(!TextHelper.isEmptyAppplyingTrim(filter.getDescription())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
-				statemet.append("descripcion = ? ");
-				parameters.add(filter.getId());
+				statemet.append("description = ? ");
+				parameters.add(filter.getDescription());
 			}
-			if(!ObjectHelper.isNull(filter.getGarmentConfiguration())) {
+			if(!ObjectHelper.isNull(filter.getGarmentConfiguration()) && !UUIDHelper.isDefault(filter.getGarmentConfiguration().getId())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("garmentConfiguration = ? ");
-				parameters.add(filter.getId());
+				parameters.add(filter.getGarmentConfiguration().getId());
 			}
 		}
 		
 	}
 
 	private void createOrderBy(final StringBuilder statement) {
-		statement.append("ORDER BY referencia ASC ");
+		statement.append("ORDER BY reference ASC ");
 	}
 
 }

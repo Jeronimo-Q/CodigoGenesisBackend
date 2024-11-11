@@ -157,20 +157,20 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 	private void createWhere(final StringBuilder statemet, final GarmentConfigurationEntity filter,
 			final ArrayList<Object> parameters) {
 		if(!UUIDHelper.isDefault(filter.getId())) {
-			statemet.append("WHERE id = ? ");
+			statemet.append("WHERE gc.id = ? ");
 			parameters.add(filter.getId());
 		}
-		if(!ObjectHelper.isNull(filter.getCategory())) {
+		if(!ObjectHelper.isNull(filter.getCategory()) && !UUIDHelper.isDefault(filter.getCategory().getId())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("category = ? ");
 			parameters.add(filter.getCategory().getId());
 		}
-		if(!ObjectHelper.isNull(filter.getGenre())) {
+		if(!ObjectHelper.isNull(filter.getGenre()) && !UUIDHelper.isDefault(filter.getGenre().getId())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("genre = ? ");
 			parameters.add(filter.getGenre().getId());
 		}
-		if(!ObjectHelper.isNull(filter.getTypeGarment())) {
+		if(!ObjectHelper.isNull(filter.getTypeGarment()) && !UUIDHelper.isDefault(filter.getTypeGarment().getId())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("typeGarment = ? ");
 			parameters.add(filter.getTypeGarment().getId());

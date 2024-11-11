@@ -27,8 +27,8 @@ public class FindGenreFacadeImpl implements FindGenreFacade{
 			throw exception;
 		} catch (final Exception exception) {
 			factory.rollbackTransaction();
-			var userMessage = "Se ha presentado un problema tratando de consultar la informacion de las categorias";
-			var technicalMessage = "Se ha presentado un problema inesperado al trartar de consulatar la informacion de las categorias. Por favor revise el log de errores para tener mas detalles";
+			var userMessage = "Se ha presentado un problema tratando de consultar la informacion de los generos";
+			var technicalMessage = "Se ha presentado un problema inesperado al trartar de consulatar la informacion de los generos. Por favor revise el log de errores para tener mas detalles";
 			
 			throw BusinessLogicMunamuInventoryException.create(userMessage,technicalMessage,exception);
 		}finally {

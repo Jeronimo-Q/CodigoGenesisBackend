@@ -21,7 +21,7 @@ public class GarmentReferenceConsistencyIsValidImpl implements GarmentReferenceC
 	}
 	
 	private void validateFormat(final String data) {
-		if(TextHelper.containOnlyNumbers(data)) {
+		if(!TextHelper.containOnlyNumbers(data)) {
 			var userMessage = "El numero de la referencia solo puede contener numeros sin espacios...";
 			throw BusinessLogicMunamuInventoryException.create(userMessage);
 		}

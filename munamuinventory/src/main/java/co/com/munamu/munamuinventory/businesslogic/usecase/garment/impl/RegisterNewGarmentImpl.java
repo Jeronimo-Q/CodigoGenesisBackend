@@ -6,9 +6,13 @@ import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentEntityAdapter;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.RegisterNewGarment;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentDescriptionDoesNotExist;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentReferenceConsistencyIsValid;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentReferenceDoesNotExist;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentDescriptionDoesNotExistImpl;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentReferenceConsistencyIsValidImpl;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentReferenceDoesNotExistImpl;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.rules.GarmentConfigurationExist;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.rules.impl.GarmentConfigurationExistImpl;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.BusinessLogicMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.DAOFactory;
@@ -17,10 +21,10 @@ import co.com.munamu.munamuinventory.domain.GarmentDomain;
 public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 
 	private DAOFactory daoFactory;
-	private GarmentReferenceDoesNotExistImpl garmentReferenceDoesNotExistImpl = new GarmentReferenceDoesNotExistImpl();
-	private GarmentConfigurationExistImpl garmentConfigurationExistImpl = new GarmentConfigurationExistImpl();
-	private GarmentReferenceConsistencyIsValidImpl garmentReferenceConsistencyIsValidImpl = new GarmentReferenceConsistencyIsValidImpl(); 
-	private GarmentDescriptionDoesNotExistImpl garmentDescriptionDoesNotExistImpl = new GarmentDescriptionDoesNotExistImpl();
+	private GarmentReferenceDoesNotExist garmentReferenceDoesNotExistImpl = new GarmentReferenceDoesNotExistImpl();
+	private GarmentConfigurationExist garmentConfigurationExistImpl = new GarmentConfigurationExistImpl();
+	private GarmentReferenceConsistencyIsValid garmentReferenceConsistencyIsValidImpl = new GarmentReferenceConsistencyIsValidImpl(); 
+	private GarmentDescriptionDoesNotExist garmentDescriptionDoesNotExistImpl = new GarmentDescriptionDoesNotExistImpl();
 	
 	
 	public RegisterNewGarmentImpl( final DAOFactory daoFactory){
