@@ -35,10 +35,10 @@ public final class GenreController {
 		var messages = new ArrayList<String>();
 		
 		try {
-			FindGenreFacade findGenre = new FindGenreFacadeImpl();
-			List<GenreDTO> genres = findGenre.execute();
+			FindGenreFacade findGenres = new FindGenreFacadeImpl();
+			List<GenreDTO> genres = findGenres.execute();
 			
-			messages.add("El genero se consulto de forma satisfactoria");
+			messages.add("Los generos se consultaron de forma satisfactoria");
 			responseWithData.setData(genres);
 			responseWithData.setMessages(messages);
 		
@@ -48,21 +48,20 @@ public final class GenreController {
 		} catch (final MunamuInventoryException exception) {
 			messages.add(exception.getUserMessage());
 			exception.printStackTrace();
-			
+			responseWithData.setMessages(messages);
 			
 			return ((new GeneratedResponse<GenreResponse>()).generateSuccessResponseWithData(responseWithData));
 		}catch (final MunamuApplicationException exception) {
 			messages.add(exception.getUserMessage());
 			exception.printStackTrace();
+			responseWithData.setMessages(messages);
 			
 			return ((new GeneratedResponse<GenreResponse>()).generateFailedResponseWithData(responseWithData));
 		}catch (final Exception exception) {
 			messages.add(
 					"Se ha presentado un problema inesperado tratando de llevar a cabo de la consulta de los generos...");
+			responseWithData.setMessages(messages);
 		}
-		
-		messages.add("Los generos se consultaron de forma satisfactoria...");
-		
 		return ((new GeneratedResponse<GenreResponse>()).generateFailedResponseWithData(responseWithData));
 
 	}

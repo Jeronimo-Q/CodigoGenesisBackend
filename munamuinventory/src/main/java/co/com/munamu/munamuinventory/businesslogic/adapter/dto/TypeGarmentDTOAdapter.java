@@ -31,7 +31,7 @@ public final class TypeGarmentDTOAdapter implements Adapter<TypeGarmentDomain,Ty
 	    public TypeGarmentDTO adaptSource(final TypeGarmentDomain data) {
 			var domainToAdapt=ObjectHelper.getDefault(data,TypeGarmentDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
 			
-			return TypeGarmentDTO.create().setId(TextHelper.EMPTY).setName(domainToAdapt.getName());
+			return TypeGarmentDTO.create().setId(domainToAdapt.getId().toString()).setName(domainToAdapt.getName());
 	    
 }
 

@@ -47,6 +47,7 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 
 		createSelect(statement);
 		createFrom(statement);
+		createJoin(statement);
 		createWhere(statement, filter, parameters);
 		createOrderBy(statement);
 
@@ -63,15 +64,22 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 
 			while (result.next()) {
 				var garmentConfigurationEntityTmp = new GarmentConfigurationEntity();
+				
+				
+				garmentConfigurationEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
+				
 				var categoryEntityTmp = new CategoryEntity();
 				var genreEntityTmp = new GenreEntity();
 				var typeGarmentEntityTmp = new TypeGarmentEntity();
 				
-				categoryEntityTmp.setName(result.getString("name"));
-				genreEntityTmp.setName(result.getString("name"));
-				typeGarmentEntityTmp.setName(result.getString("name"));
+				categoryEntityTmp.setId(UUIDHelper.convertToUUID(result.getObject("category")));
+				categoryEntityTmp.setName(result.getString("category_name"));
+				genreEntityTmp.setId(UUIDHelper.convertToUUID(result.getObject("genre")));
+				genreEntityTmp.setName(result.getString("genre_name"));
+				typeGarmentEntityTmp.setId(UUIDHelper.convertToUUID(result.getObject("typeGarment")));
+				typeGarmentEntityTmp.setName(result.getString("type_garment_name"));
 				
-				garmentConfigurationEntityTmp.setId(UUIDHelper.convertToUUID(result.getString("id")));
+				garmentConfigurationEntityTmp.setId(UUIDHelper.convertToUUID(result.getObject("id")));
 				garmentConfigurationEntityTmp.setCategory(categoryEntityTmp);
 				garmentConfigurationEntityTmp.setGenre(genreEntityTmp);
 				garmentConfigurationEntityTmp.setTypeGarment(typeGarmentEntityTmp);
@@ -135,11 +143,15 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 	}
 
 	private void createSelect(final StringBuilder statement) {
-		statement.append("SELECT id, genre, category, typeGarment ");
+		statement.append("SELECT gc.id,gc.category, c.name AS category_name,gc.genre, g.name AS genre_name, gc.typeGarment, tg.name AS type_garment_name ");
 	}
 
 	private void createFrom(final StringBuilder statement) {
-		statement.append("FROM GarmentConfiguration ");
+		statement.append("FROM GarmentConfiguration gc ");
+	}
+	
+	private void createJoin(final StringBuilder statement) {
+		statement.append("JOIN Category c ON gc.category = c.id JOIN Genre g ON gc.genre = g.id JOIN TypeGarment tg ON gc.typeGarment = tg.id ");
 	}
 
 	private void createWhere(final StringBuilder statemet, final GarmentConfigurationEntity filter,
@@ -151,17 +163,17 @@ final class GarmentConfigurationSqlServerDAO extends SqlDAO implements GarmentCo
 		if(!ObjectHelper.isNull(filter.getCategory())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("category = ? ");
-			parameters.add(filter.getCategory());
+			parameters.add(filter.getCategory().getId());
 		}
 		if(!ObjectHelper.isNull(filter.getGenre())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("genre = ? ");
-			parameters.add(filter.getGenre());
+			parameters.add(filter.getGenre().getId());
 		}
 		if(!ObjectHelper.isNull(filter.getTypeGarment())) {
 			statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 			statemet.append("typeGarment = ? ");
-			parameters.add(filter.getTypeGarment());
+			parameters.add(filter.getTypeGarment().getId());
 		}
 	}
 

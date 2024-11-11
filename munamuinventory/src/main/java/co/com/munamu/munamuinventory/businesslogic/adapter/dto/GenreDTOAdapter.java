@@ -32,7 +32,6 @@ public final class GenreDTOAdapter implements Adapter<GenreDomain,GenreDTO> {
 		    @Override
 		    public GenreDTO adaptSource(final GenreDomain data) {
 				var domainToAdapt=ObjectHelper.getDefault(data,GenreDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
-				//return GenreDTO.create().setId(TextHelper.EMPTY).setName(domainToAdapt.getName());
 				return GenreDTO.create().setId(domainToAdapt.getId().toString()).setName(data.getName());
 		    
 	}

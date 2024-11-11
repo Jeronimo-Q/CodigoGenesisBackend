@@ -59,7 +59,7 @@ public final class GarmentDTOAdapter implements Adapter<GarmentDomain,GarmentDTO
 		    GarmentConfigurationDTO garmentConfigurationDTO = 
 		    		GarmentConfigurationDTOAdapter.getGarmentConfigurationDTOAdapter().adaptSource(domainToAdapt.getGarmentConfiguration());
 
-		    return GarmentDTO.create().setId(TextHelper.EMPTY).setGarmentConfiguration(garmentConfigurationDTO);
+		    return GarmentDTO.create().setId(domainToAdapt.getId().toString()).setGarmentConfiguration(garmentConfigurationDTO);
 
 	}
 

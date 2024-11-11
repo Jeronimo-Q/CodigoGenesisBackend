@@ -97,7 +97,7 @@ final class SizeSqlServerDAO extends SqlDAO implements SizeDAO{
 			if(!TextHelper.isEmptyAppplyingTrim(filter.getName())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("name = ? ");
-				parameters.add(filter.getName());
+				parameters.add(filter.getId());
 			}
 		}
 		

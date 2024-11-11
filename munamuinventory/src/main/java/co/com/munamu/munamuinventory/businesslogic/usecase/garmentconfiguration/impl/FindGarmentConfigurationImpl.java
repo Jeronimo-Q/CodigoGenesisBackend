@@ -21,8 +21,8 @@ public final class FindGarmentConfigurationImpl implements FindGarmentConfigurat
 	@Override
 	public List<GarmentConfigurationDomain> execute(GarmentConfigurationDomain data) {
 		
-		var garmentEntity = GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptSource(data);
-		var result = daoFactory.getGarmentConfigurationDAO().findByFilter(garmentEntity);	
+		var garmentConfigurationEntity = GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptSource(data);
+		var result = daoFactory.getGarmentConfigurationDAO().findByFilter(garmentConfigurationEntity);	
 		
 		return GarmentConfigurationEntityAdapter.getGarmentConfigurationEntityAdapter().adaptTarjet(result);
 	}

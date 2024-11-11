@@ -30,7 +30,7 @@ public final class SizeDTOAdapter implements Adapter<SizeDomain,SizeDTO> {
 	    @Override
 	    public SizeDTO adaptSource(final SizeDomain data) {
 			var domainToAdapt=ObjectHelper.getDefault(data,SizeDomain.create(UUIDHelper.getDefault(),TextHelper.EMPTY));
-			return SizeDTO.create().setId(TextHelper.EMPTY).setName(domainToAdapt.getName());
+			return SizeDTO.create().setId(domainToAdapt.getId().toString()).setName(domainToAdapt.getName());
 	    
 }
 		@Override

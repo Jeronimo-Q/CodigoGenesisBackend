@@ -21,8 +21,7 @@ public class FindGenreFacadeImpl implements FindGenreFacade{
 			
 			var findGenreUseCase = new FindGenreImpl(factory);
 			var var1 = findGenreUseCase.execute();
-			var variable= GenreDTOAdapter.getGenreDTOAdapter().adaptSource(var1);
-			return variable;
+			return GenreDTOAdapter.getGenreDTOAdapter().adaptSource(var1);
 			
 		} catch (final MunamuInventoryException exception) {
 			throw exception;

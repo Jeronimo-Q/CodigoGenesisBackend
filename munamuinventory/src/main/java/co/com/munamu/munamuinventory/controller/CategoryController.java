@@ -32,36 +32,35 @@ public final class CategoryController {
 	public ResponseEntity<CategoryResponse> retrieveAll() {
 		CategoryResponse responseWithData = new CategoryResponse();
 		
-		var message = new ArrayList<String>();
-		
-		message.add("hola");
-		
+		var messages = new ArrayList<String>();
 		
 		try {
 			FindCategoryFacade findCategory = new FindCategoryFacadeImpl();
 			List<CategoryDTO> categories = findCategory.execute();
 			
+			messages.add("Las categorias se consultaron de forma satisfactoria");
 			responseWithData.setData(categories);
-			responseWithData.setMessages(message);
+			responseWithData.setMessages(messages);
 			
 			return ((new GeneratedResponse<CategoryResponse>()).generateSuccessResponseWithData(responseWithData));
 			
 		} catch (final MunamuInventoryException exception) {
-			message.add(exception.getUserMessage());
+			messages.add(exception.getUserMessage());
 			exception.printStackTrace();
+			responseWithData.setMessages(messages);
 			
 			return ((new GeneratedResponse<CategoryResponse>()).generateSuccessResponseWithData(responseWithData));
 		}catch (final MunamuApplicationException exception) {
-			message.add(exception.getUserMessage());
+			messages.add(exception.getUserMessage());
 			exception.printStackTrace();
+			responseWithData.setMessages(messages);
 			
 			return ((new GeneratedResponse<CategoryResponse>()).generateFailedResponseWithData(responseWithData));
 		}catch (final Exception exception) {
-			message.add(
-					"Se ha presentado un problema inesperado tratando de llevar a cabo la consulta de la categoria satisfactoria");
+			messages.add(
+					"Se ha presentado un problema inesperado tratando de llevar a cabo la consulta de la categoria...");
+			responseWithData.setMessages(messages);
 		}
-		
-		message.add("Las categorias se consultaron de forma satisfactoria");
 		
 		return ((new GeneratedResponse<CategoryResponse>()).generateFailedResponseWithData(responseWithData));
 

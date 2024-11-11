@@ -64,7 +64,7 @@ public final class SizePerGarmentDTOAdapter implements Adapter<SizePerGarmentDom
 	    
 	    GarmentDTO garmentDTO = GarmentDTOAdapter.getGarmentDTOAdapter().adaptSource(domainToAdapt.getGarment());
 
-	    return SizePerGarmentDTO.create().setId(TextHelper.EMPTY).setSize(sizeDTO).setGarment(garmentDTO);
+	    return SizePerGarmentDTO.create().setId(domainToAdapt.getId().toString()).setSize(sizeDTO).setGarment(garmentDTO);
 	}
 
 	@Override

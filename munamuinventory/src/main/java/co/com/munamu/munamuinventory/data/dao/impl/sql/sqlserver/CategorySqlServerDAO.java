@@ -96,7 +96,7 @@ final class CategorySqlServerDAO extends SqlDAO implements CategoryDAO{
 			if(!TextHelper.isEmptyAppplyingTrim(filter.getName())) {
 				statemet.append((parameters.isEmpty()) ?"WHERE "  : "AND ");
 				statemet.append("name = ? ");
-				parameters.add(filter.getName());
+				parameters.add(filter.getId());
 			}
 		}
 		
