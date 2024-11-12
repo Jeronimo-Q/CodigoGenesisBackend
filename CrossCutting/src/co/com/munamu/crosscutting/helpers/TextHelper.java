@@ -70,7 +70,7 @@ public class TextHelper {
 	}
 	
 	public static boolean maxLenIsValid(final String string, final int max) {
-		return NumericHelper.isGreaterOrEqualTo(len(string), max);
+		return NumericHelper.isLessOrEqualTo(len(string), max);
 	}
 	
 	

@@ -14,7 +14,7 @@ public class GarmentReferenceConsistencyIsValidImpl implements GarmentReferenceC
 	}
 	
 	private void validateLen(final String data) {
-		if(TextHelper.lenIsValid(data, 4, 6)) {
+		if(!TextHelper.lenIsValid(data, 4, 6)) {
 			var userMessage = "El numero de la referencia solo puede tener entre 4 a 6 caracteres...";
 			throw BusinessLogicMunamuInventoryException.create(userMessage);
 		}

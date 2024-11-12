@@ -6,9 +6,11 @@ import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.crosscutting.helpers.UUIDHelper;
 import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentEntityAdapter;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.RegisterNewGarment;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentDescriptionConsistencyIsValid;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentDescriptionDoesNotExist;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentReferenceConsistencyIsValid;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.GarmentReferenceDoesNotExist;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentDescriptionConsistencyIsValidImpl;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentDescriptionDoesNotExistImpl;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentReferenceConsistencyIsValidImpl;
 import co.com.munamu.munamuinventory.businesslogic.usecase.garment.rules.impl.GarmentReferenceDoesNotExistImpl;
@@ -25,7 +27,7 @@ public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 	private GarmentConfigurationExist garmentConfigurationExistImpl = new GarmentConfigurationExistImpl();
 	private GarmentReferenceConsistencyIsValid garmentReferenceConsistencyIsValidImpl = new GarmentReferenceConsistencyIsValidImpl(); 
 	private GarmentDescriptionDoesNotExist garmentDescriptionDoesNotExistImpl = new GarmentDescriptionDoesNotExistImpl();
-	
+	private GarmentDescriptionConsistencyIsValid garmentDescriptionConsistencyIsValid = new GarmentDescriptionConsistencyIsValidImpl();
 	
 	public RegisterNewGarmentImpl( final DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
@@ -34,10 +36,11 @@ public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 	@Override
 	public void execute(final GarmentDomain data) {
 		
-		garmentReferenceConsistencyIsValidImpl.execute(data.getReference());
 		garmentReferenceDoesNotExistImpl.execute(data, daoFactory);
-		garmentDescriptionDoesNotExistImpl.execute(data, daoFactory);
 		garmentConfigurationExistImpl.execute(data.getGarmentConfiguration().getId(), daoFactory);
+		garmentDescriptionDoesNotExistImpl.execute(data, daoFactory);
+		garmentReferenceConsistencyIsValidImpl.execute(data.getReference());
+		garmentDescriptionConsistencyIsValid.execute(data.getDescription());
 		
 		var garmentDomainToMap = GarmentDomain.create(generatedId(), data.getGarmentConfiguration(), data.getDescription(), data.getReference());
 		var garmentEntity = GarmentEntityAdapter.getGarmentEntityAdapter().adaptSource(garmentDomainToMap);
