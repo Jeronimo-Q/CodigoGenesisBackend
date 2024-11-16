@@ -13,8 +13,7 @@
 	<artifactId>munamuinventory-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>munamuinventory</name>
-	<description>Componente encargado de ofrecer los servicios de munamu
-		inventory</description>
+	<description>Componente encargado de ofrecer los servicios de munamu inventory</description>
 	<url />
 	<licenses>
 		<license />

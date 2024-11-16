@@ -4,17 +4,17 @@ import java.util.List;
 
 import co.com.munamu.crosscutting.helpers.ObjectHelper;
 import co.com.munamu.munamuinventory.businesslogic.adapter.entity.GarmentConfigurationEntityAdapter;
-import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.FindGarmentConfiguration;
+import co.com.munamu.munamuinventory.businesslogic.usecase.garmentconfiguration.FindGarmentConfigurationByIds;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.BusinessLogicMunamuInventoryException;
 import co.com.munamu.munamuinventory.data.dao.DAOFactory;
 import co.com.munamu.munamuinventory.domain.GarmentConfigurationDomain;
 
 
-public final class FindGarmentConfigurationImpl implements FindGarmentConfiguration{
+public final class FindGarmentConfigurationByIdsImpl implements FindGarmentConfigurationByIds{
 	
 	private DAOFactory daoFactory;
 	
-	public FindGarmentConfigurationImpl(DAOFactory daoFactory){
+	public FindGarmentConfigurationByIdsImpl(DAOFactory daoFactory){
 		setDaoFactory(daoFactory);
 	}
 

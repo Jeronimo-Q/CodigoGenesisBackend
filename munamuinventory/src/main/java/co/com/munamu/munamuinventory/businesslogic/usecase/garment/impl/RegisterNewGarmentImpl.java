@@ -59,9 +59,9 @@ public final class RegisterNewGarmentImpl implements RegisterNewGarment{
 
 	private UUID generatedId() {
 		var id = UUIDHelper.generate();
-		var stateEntity = daoFactory.getGarmentDAO().findByID(id);
+		var garmentEntity = daoFactory.getGarmentDAO().findByID(id);
 		
-		if(UUIDHelper.isEqual(stateEntity.getId(), id)) {
+		if(UUIDHelper.isEqual(garmentEntity.getId(), id)) {
 			id = generatedId();
 		}
 		

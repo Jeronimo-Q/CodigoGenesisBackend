@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.munamu.crosscutting.exceptions.MunamuApplicationException;
-import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.FindGarmentConfigurationFacade;
-import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.impl.FindGarmentConfigurationFacadeImpl;
+import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.FindAllGarmentConfigurationFacade;
+import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.FindGarmentConfigurationByIdsFacade;
+import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.impl.FindAllGarmentConfigurationFacadeImpl;
+import co.com.munamu.munamuinventory.businesslogic.facade.garmentconfiguration.impl.FindGarmentConfigurationByIdsFacadeImpl;
 import co.com.munamu.munamuinventory.controller.response.GeneratedResponse;
 import co.com.munamu.munamuinventory.controller.response.concrete.GarmentConfigurationResponse;
 import co.com.munamu.munamuinventory.crosscutting.exceptions.MunamuInventoryException;
@@ -32,7 +34,7 @@ public final class GarmentConfigurationController {
 		return GarmentConfigurationDTO.create();
 	}
 	
-	@GetMapping
+	@GetMapping("/byids")
 	public ResponseEntity<GarmentConfigurationResponse> retrieveByIds(    
 			@RequestParam String categoryId, 
 		    @RequestParam String genreId, 
@@ -54,7 +56,7 @@ public final class GarmentConfigurationController {
 		var messages = new ArrayList<String>();
 		
 		try {
-			FindGarmentConfigurationFacade findGarmetsConfigurations = new FindGarmentConfigurationFacadeImpl();
+			FindGarmentConfigurationByIdsFacade findGarmetsConfigurations = new FindGarmentConfigurationByIdsFacadeImpl();
 			List<GarmentConfigurationDTO> garmentsConfigurations = findGarmetsConfigurations.execute(garmentConfigurationDTO);
 			
 			messages.add("La configuracion de prenda fue consultada satisfacotriamente...");
@@ -84,6 +86,46 @@ public final class GarmentConfigurationController {
 		return ((new GeneratedResponse<GarmentConfigurationResponse>()).generateFailedResponseWithData(responseWithData));
 
 	}
+	
+	
+	@GetMapping
+	public ResponseEntity<GarmentConfigurationResponse> retrieveAll() {
+		GarmentConfigurationResponse responseWithData = new GarmentConfigurationResponse();
+		
+		var messages = new ArrayList<String>();
+		
+		try {
+			FindAllGarmentConfigurationFacade findGarments = new FindAllGarmentConfigurationFacadeImpl();
+			List<GarmentConfigurationDTO> garment = findGarments.execute();
+			
+			messages.add("Las configuraciones de las prendas se consultaron de forma satisfactoria");
+			responseWithData.setData(garment);
+			responseWithData.setMessages(messages);
+			
+			return ((new GeneratedResponse<GarmentConfigurationResponse>()).generateSuccessResponseWithData(responseWithData));
+			
+		} catch (final MunamuInventoryException exception) {
+			messages.add(exception.getUserMessage());
+			exception.printStackTrace();
+			responseWithData.setMessages(messages);
+			
+			return ((new GeneratedResponse<GarmentConfigurationResponse>()).generateSuccessResponseWithData(responseWithData));
+		}catch (final MunamuApplicationException exception) {
+			messages.add(exception.getUserMessage());
+			exception.printStackTrace();
+			responseWithData.setMessages(messages);
+			
+			return ((new GeneratedResponse<GarmentConfigurationResponse>()).generateFailedResponseWithData(responseWithData));
+		}catch (final Exception exception) {
+			messages.add(
+					"Se ha presentado un problema inesperado tratando de llevar a cabo la consulta de la categoria...");
+			responseWithData.setMessages(messages);
+		}
+		
+		return ((new GeneratedResponse<GarmentConfigurationResponse>()).generateFailedResponseWithData(responseWithData));
+
+	}
+	
 	
 	
 }
